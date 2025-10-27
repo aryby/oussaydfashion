@@ -3,7 +3,7 @@
         @if ($related_product->images)
             <div class="img-wrap">
                 <a href="{{ route('products.show', $related_product->slug) }}"><img
-                        src="{{ asset('storage/' . $related_product->images[0]) }}"></a>
+                        src="{{ asset('uploads/' . $related_product->images[0]) }}"></a>
             </div>
         @else
             <div class="img-wrap">
