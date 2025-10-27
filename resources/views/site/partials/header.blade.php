@@ -144,7 +144,7 @@
         <div class="container">
 
             <a href="#" class="header-logo">
-                <img src="{{ asset('inspire/assets/images/logo/logo.svg') }}" alt="Anon's logo" width="120" height="36">
+                <img src="{{ asset('inspire/assets/images/logo/logo.jpg') }}" alt="Anon's logo" width="120" height="36">
             </a>
 
             <div class="header-search-container">
