@@ -42,18 +42,10 @@ class ViewComposerServiceProvider extends ServiceProvider
         });
 
         // Home page
-        View::composer('site.partials.slider', function ($view) {
+        View::composer('site.pages.home', function ($view) {
             $view->with('offers', Offer::with('product')->get())
-                ->with('featured_products', Product::featured()->with(['ratings', 'offer'])->limit(3)->get());
-        });
-        View::composer('site.partials.featured_categories', function ($view) {
-            $view->with('featured_categories', Category::featured()->limit(3)->get());
-        });
-        View::composer('site.partials.featured_products', function ($view) {
-            $view->with('featured_products', Product::featured()->with(['ratings', 'offer'])->get());
-        });
-        View::composer('site.partials.recently_added_products', function ($view) {
-            $view->with('recently_added_products', Product::recentlyAdded()->with(['ratings', 'offer'])->get());
+                ->with('featured_categories', Category::featured()->limit(3)->get())
+                ->with('recently_added_products', Product::recentlyAdded()->with(['ratings', 'offer', 'categories'])->get());
         });
     }
 }
