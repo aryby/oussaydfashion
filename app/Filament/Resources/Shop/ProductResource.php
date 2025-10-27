@@ -104,6 +104,7 @@ class ProductResource extends Resource
                                 TextInput::make('name')
                                     ->unique(ignoreRecord: true),
                                 FileUpload::make('logo')
+                                    ->disk('public')
                                     ->preserveFilenames(),
                             ]),
                         Select::make('categories')
@@ -116,6 +117,7 @@ class ProductResource extends Resource
                             ->schema([
                                 FileUpload::make('images')
                                     ->multiple()
+                                    ->disk('public')
                                     ->preserveFileNames()
                                     ->maxFiles(5),
                             ])
