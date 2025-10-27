@@ -1,12 +1,19 @@
 <div class="widget-header dropdown">
     <a href="#" class="ml-3 icontext" data-toggle="dropdown" data-offset="20,10">
-        <div class="icon-wrap icon-xs bg2 round text-secondary"><i class="fa fa-user"></i>
-        </div>
+        {{-- <div class="icon-wrap icon-xs bg2 round text-secondary">
+            <i class="fa fa-user"></i>
+        </div> --}}
         <div class="text-wrap">
             @auth
-                <small>{{ Str::limit(auth()->user()->full_name, 15) }}</small>
+                {{--                 <span>{{ Str::limit(auth()->user()->full_name, 5) }}</span> --}}
+                <button class="action-btn">
+                    <ion-icon name="person-outline" class=" text-success"></ion-icon>
+                </button>
             @else
-                <span>{{ __('Login') }} <i class="fab fa-caret-down"></i></span>
+                {{-- <span>{{ __('Login') }} <i class="fab fa-caret-down"></i></span> --}}
+                <button class="action-btn">
+                    <ion-icon name="person-outline"></ion-icon>
+                </button>
             @endauth
         </div>
     </a>

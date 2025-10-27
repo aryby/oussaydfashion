@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg  bg-transparent navbar-light text-uppercase ">
     <div class="container">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav"
@@ -7,7 +7,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="main_nav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mx-auto">
                 @forelse ($categories as $category)
                     @if ($category->items->isEmpty())
                         <li class="nav-item font-weight-normal">
