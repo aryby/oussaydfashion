@@ -97,8 +97,8 @@
                                 <article class="gallery-wrap">
                                     @if ($product->images)
                                         <div class="img-big-wrap">
-                                            <a href="{{ asset('storage/' . $product->images[0]) }}" data-fancybox="">
-                                                <img src="{{ asset('storage/' . $product->images[0]) }}"
+                                            <a href="{{ asset('uploads/' . $product->images[0]) }}" data-fancybox="">
+                                                <img src="{{ asset('uploads/' . $product->images[0]) }}"
                                                     alt="{{ $product->name . ' image' }}">
                                             </a>
                                         </div>
@@ -112,8 +112,8 @@
                                         <div class="img-small-wrap">
                                             @foreach ($product->images as $image)
                                                 <div class="item-gallery">
-                                                    <a href="{{ asset('storage/' . $image) }}" data-fancybox="">
-                                                        <img src="{{ asset('storage/' . $image) }}" alt="">
+                                                    <a href="{{ asset('uploads/' . $image) }}" data-fancybox="">
+                                                        <img src="{{ asset('uploads/' . $image) }}" alt="">
                                                     </a>
                                                 </div>
                                             @endforeach
