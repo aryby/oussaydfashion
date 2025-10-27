@@ -48,6 +48,14 @@ class Product extends Model
         });
     }
 
+    public function getNameAttribute($value)
+    {
+        if (app()->getLocale() == 'ar' && $this->name_ar) {
+            return $this->name_ar;
+        }
+        return $value;
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
