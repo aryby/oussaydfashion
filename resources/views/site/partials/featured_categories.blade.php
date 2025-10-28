@@ -40,7 +40,7 @@
 
                 {{-- <div class="col-md-4">
                     <div class="card-banner"
-                        style="height:250px; background-image: url({{ secure_asset('storage/' . $category->image) }});">
+                        style="height:250px; background-image: url({{ secure_asset('uploads/' . $category->image) }});">
                         <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
                             <div class="text-center">
                                 <h5 class="card-title">{{ $category->name }}</h5>

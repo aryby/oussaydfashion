@@ -33,6 +33,8 @@ class BrandResource extends Resource
             ->schema([
                 TextInput::make('name'),
                 FileUpload::make('logo')
+                    ->directory('uploads')
+                    ->visibility('public')
             ]);
     }
 

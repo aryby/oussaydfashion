@@ -746,7 +746,7 @@
                         @if (config('settings.site_logo.attachment') !== null)
                             <a href="{{ route('home') }}">
                                 <img class="logo"
-                                    src="{{ secure_asset('storage/' . config('settings.site_logo.attachment')) }}">
+                                    src="{{ secure_asset('uploads/' . config('settings.site_logo.attachment')) }}">
                             </a>
                         @else
                             <a href="{{ route('home') }}" class="text-dark">

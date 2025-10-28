@@ -43,6 +43,8 @@ class SettingResource extends Resource
                 TextInput::make('key'),
                 TextInput::make('value'),
                 FileUpload::make('attachment')
+                    ->directory('uploads')
+                    ->visibility('public')
             ]);
     }
 

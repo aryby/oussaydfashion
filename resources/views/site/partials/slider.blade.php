@@ -85,7 +85,7 @@
                     @foreach ($offers as $offer)
                         <div class="item-slide">
                             <a href="{{ route('products.show', $offer->product?->slug) }}"><img
-                                    src="{{ asset('storage/' . $offer->image) }}"></a>
+                                    src="{{ asset('uploads/' . $offer->image) }}"></a>
                         </div>
                     @endforeach
                 </div>
@@ -99,7 +99,7 @@
                                 <div class="aside">
                                     <div class="img-wrap img-sm mt-3"><a
                                             href="{{ route('products.show', $product->slug) }}"><img
-                                                src="{{ asset('storage/' . $product->images[0]) }}"></a>
+                                                src="{{ asset('uploads/' . $product->images[0]) }}"></a>
                                     </div>
                                 </div>
                             @else

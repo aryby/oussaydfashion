@@ -50,6 +50,8 @@ class OfferResource extends Resource
                 FileUpload::make('image')
                     ->required()
                     ->columnSpanFull()
+                    ->directory('uploads')
+                    ->visibility('public')
                     ->placeholder('Preferred Size: 690x255'),
                 Select::make('product_id')
                     ->required()

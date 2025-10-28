@@ -77,7 +77,8 @@ class CategoryResource extends Resource
                     ->label('parent')
                     ->options(Category::orderByRaw('-name ASC')->get()->nest()->listsFlattened('name')),
                 FileUpload::make('image')
-                    ->preserveFilenames(),
+                    ->directory('uploads')
+                    ->visibility('public'),
                 Toggle::make('menu')->default(true),
                 Toggle::make('featured')
             ]);

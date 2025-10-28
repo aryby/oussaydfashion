@@ -21,6 +21,8 @@ class OfferRelationManager extends RelationManager
             ->schema([
                 FileUpload::make('image')
                     ->required()
+                    ->directory('uploads')
+                    ->visibility('public')
                     ->placeholder('Preferred Size: 690x255'),
                 TextInput::make('discount_percentage')
                     ->required()

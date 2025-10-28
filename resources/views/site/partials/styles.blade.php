@@ -1,5 +1,5 @@
 <link rel="shortcut icon" type="image/x-icon"
-    href="{{ secure_asset('storage/' . config('settings.site_favicon.attachment')) }}">
+    href="{{ secure_asset('uploads/' . config('settings.site_favicon.attachment')) }}">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- jQuery -->
@@ -52,7 +52,7 @@
 
 {{-- not secure --}}
 {{-- <link rel="shortcut icon" type="image/x-icon"
-    href="{{ asset('storage/' . config('settings.site_favicon.attachment')) }}">
+    href="{{ asset('uploads/' . config('settings.site_favicon.attachment')) }}">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- jQuery -->

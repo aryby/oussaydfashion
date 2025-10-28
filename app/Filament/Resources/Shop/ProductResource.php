@@ -104,8 +104,8 @@ class ProductResource extends Resource
                                 TextInput::make('name')
                                     ->unique(ignoreRecord: true),
                                 FileUpload::make('logo')
-                                    ->disk('public')
-                                    ->preserveFilenames(),
+                                    ->directory('uploads')
+                                    ->visibility('public'),
                             ]),
                         Select::make('categories')
                             ->relationship('categories', 'name')
@@ -117,8 +117,8 @@ class ProductResource extends Resource
                             ->schema([
                                 FileUpload::make('images')
                                     ->multiple()
-                                    ->disk('public')
-                                    ->preserveFileNames()
+                                    ->directory('uploads')
+                                    ->visibility('public')
                                     ->maxFiles(5),
                             ])
                             ->collapsible(),
