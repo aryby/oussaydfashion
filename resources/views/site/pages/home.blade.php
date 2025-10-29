@@ -12,4 +12,5 @@
     @include('site.partials.featured_categories')
     @include('site.partials.featured_products')
     @include('site.partials.recently_added_products')
+    @include('site.partials.testmonials')
 @endsection

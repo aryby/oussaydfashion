@@ -1,3 +1,108 @@
+    <div class="showcase">
+
+    <div class="showcase-banner">
+        @if ($product->images)
+            <div class="img-wrap">
+                <a href="{{ route('products.show', $product->slug) }}">
+                    <img src="{{ asset('uploads/' . $product->images[0]) }}" class="showcase-img"></a>
+            </div>
+        @else
+            <div class="img-wrap">
+                <a href="https://via.placeholder.com/176"><img src="https://via.placeholder.com/176"></a>
+            </div>
+        @endif
+        {{-- <img src="/inspire/assets/images/products/jacket-3.jpg" alt="Mens Winter Leathers Jackets" width="300"
+            class="product-img default">
+        <img src="/inspire/assets/images/products/jacket-4.jpg" alt="Mens Winter Leathers Jackets" width="300"
+            class="product-img hover"> --}}
+
+        <p class="showcase-badge">
+            @if ($product->offer?->discount_percentage)
+                <span
+                    class="d-inline badge badge-success">{{ $product->offer?->discount_percentage . '% ' . __('Discount') }}
+                </span>
+            @endif
+        </p>
+
+        <div class="showcase-actions">
+
+            <button class="btn-action">
+                <ion-icon name="heart-outline"></ion-icon>
+            </button>
+
+            <a href="{{ route('products.show', $product->slug) }}" class="btn-action">
+                <ion-icon name="eye-outline"></ion-icon>
+            </a>
+
+            {{--  <button class="btn-action">
+                <ion-icon name="repeat-outline"></ion-icon>
+            </button> --}}
+
+            <button class="btn-action">
+                <ion-icon name="bag-add-outline"></ion-icon>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="showcase-content">
+
+        <a href="#" class="showcase-category">{{ $product->name }}</a>
+
+        <a href="#">
+            <h3 class="showcase-title">
+                {!! app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description !!}
+            </h3>
+        </a>
+
+        <div class="showcase-rating">
+            <div class="rating-wrap d-inline">
+                @php
+                    $ratings_count = $product->ratings->count('star_rating');
+                    if ($ratings_count > 0) {
+                        $ratings_sum = $product->ratings->sum('star_rating');
+                        $avg_rating = round($ratings_sum / $ratings_count, 1);
+                        $stars_width = ($avg_rating / 5) * 100;
+                    } else {
+                        $stars_width = 0;
+                    }
+                @endphp
+                <ul class="rating-stars">
+                    <li style="width:{{ $stars_width }}%" class="stars-active">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                            class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                            class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </li>
+                </ul>
+                <small>({{ $ratings_count }})</small>
+            </div> &nbsp;
+        </div>
+
+        <div class="price-box">
+            @if ($product->sale_price > 0)
+                <span
+                    class="price-new">{{ number_format($product->sale_price) }}<small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small>
+                </span>
+                <small>
+                    <del class="price-old">{{ number_format($product->unit_price) }}</del>
+                    <small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small></small>
+            @else
+                <span
+                    class="price-new"><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small>{{ number_format($product->unit_price) }}</span>
+            @endif
+            {{-- <p class="price">$48.00</p>
+            <del>$75.00</del> --}}
+        </div>
+
+    </div>
+
+</div>
+
+{{-- 
 <div class="col-md-3">
     <figure class="card card-product">
         @if ($product->images)
@@ -47,14 +152,15 @@
             <div class="price-wrap h5">
                 @if ($product->sale_price > 0)
                     <span
-                        class="price-new"><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small>{{ number_format($product->sale_price) }}</span>
-                    <small><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small><del
+                        class="price-new"><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small>{{ number_format($product->sale_price) }}</span>
+                    <small><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small><del
                             class="price-old">{{ number_format($product->unit_price) }}</del></small>
                 @else
                     <span
-                        class="price-new"><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small>{{ number_format($product->unit_price) }}</span>
+                        class="price-new"><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small>{{ number_format($product->unit_price) }}</span>
                 @endif
             </div>
         </div>
     </figure>
 </div>
+ --}}

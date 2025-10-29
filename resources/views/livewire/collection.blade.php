@@ -72,13 +72,16 @@
                         <br>
 
                     </aside>
-                    @forelse ($filtered_products as $product)
-                        @include('site.partials.products')
-                    @empty
-                        <div class="col-md-3">
-                            <p>{{ __('No products found') }}</p>
-                        </div>
-                    @endforelse
+                    <div class="product-grid">
+
+                        @forelse ($filtered_products as $product)
+                            @include('site.partials.products')
+                        @empty
+                            <div class="col-md-3">
+                                <p>{{ __('No products found') }}</p>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </section>

@@ -140,17 +140,21 @@
                                         <dt class="col-sm-3">{{ __('Model Name') }}</dt>
                                         <dd class="col-sm-9">{{ $product->model }}</dd>
                                         <dt class="col-sm-3">{{ __('About this item') }}</dt>
-                                        <dd class="col-sm-9">{!! app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description !!}</dd>
+                                        <dd class="col-sm-9">
+                                            {!! app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description !!}
+                                        </dd>
                                     </dl>
                                     <div class="mb-3">
                                         @if ($product->sale_price > 0)
                                             <var class="price h3 text-primary">
                                                 <span class="price" id="productPrice">
                                                     <span
-                                                        class="currency"><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small></span>{{ number_format($product->sale_price) }}
+                                                        class="currency"><small><sup>
+                                                            {{ env('CURRENCY_SYMBOLE') }}
+                                                        </sup></small></span>{{ number_format($product->sale_price) }}
                                                 </span>
                                                 <small
-                                                    class="price-old"><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small>
+                                                    class="price-old"><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small>
                                                     <del>
                                                         {{ number_format($product->unit_price) }}
                                                     </del>
@@ -159,7 +163,7 @@
                                         @else
                                             <var class="price h3 text-primary">
                                                 <span class="num" id="productPrice"><span
-                                                        class="currency"><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small></span>{{ number_format($product->unit_price) }}</span>
+                                                        class="currency"><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small></span>{{ number_format($product->unit_price) }}</span>
                                             </var>
                                         @endif
                                     </div>
@@ -282,7 +286,7 @@
             })
 
             document.getElementById("productPrice").innerHTML =
-                "<span class='currency'><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small></span>" +
+                "<span class='currency'><small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small></span>" +
                 price.toLocaleString();
             document.getElementById("finalPrice").value =
                 price.toFixed(2);
