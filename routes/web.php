@@ -83,7 +83,8 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/checkout/paymoborder', [CheckoutController::class, 'placePayMobOrder'])
             ->name('checkout.placePayMobOrder');
-
+        Route::post('/checkout/paycashorder', [CheckoutController::class, 'placePayCashOrder'])
+            ->name('checkout.placePayCashOrder');
         // PayPal
         Route::get('handle-payment', [PayPalPaymentController::class, 'handlePayment'])
             ->name('payment.make');
@@ -93,6 +94,11 @@ Route::middleware('auth')->group(function () {
 
         Route::get('success-payment', [PayPalPaymentController::class, 'successPayment'])
             ->name('payment.success');
+
+        Route::get('/checkout/success/{order}', function (\App\Models\Order $order) {
+            \Cart::session(auth()->id())->clear();
+            return to_route('account.orders')->with('success', 'Order #' . $order->order_number . ' has been placed successfully!');
+        })->name('checkout.success');
     });
 });
 

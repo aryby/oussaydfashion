@@ -50,7 +50,7 @@ class InvoiceController extends Controller
             ->status($order->payment_status->value)
             ->seller($seller)
             ->buyer($customer)
-            ->currencyCode($order->currency)
+            ->currencyCode("Dhs")
             ->currencySymbol(config('settings.currency_symbol.value'))
             ->date(Carbon::parse($order->updated_at))
             ->shipping(config('settings.shipping_cost.value') ?: 0)

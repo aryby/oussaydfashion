@@ -102,6 +102,8 @@
                         class="btn btn-outline-primary btn-md btn-block">{{ __('Checkout with PayPal') }}</a>
                     <a href="{{ route('checkout.index', ['payment_type' => 'card']) }}"
                         class="btn btn-outline-secondary btn-md btn-block">{{ __('Checkout with Bank Card') }}</a>
+                    <a href="{{ route('checkout.index', ['payment_type' => 'cash']) }}"
+                        class="btn btn-outline-secondary btn-md btn-block">{{ __('Cash on Delivery') }}</a>
                     <hr>
                     <button class="btn btn-outline-danger btn-block mb-4"
                         wire:click="clear()">{{ __('Clear Cart') }}</button>
