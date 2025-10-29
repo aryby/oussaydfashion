@@ -24,17 +24,17 @@ class StoreOrderDetailsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|max:50|regex:/^[a-zA-Z\x{0600}-\x{06FF}. ]+$/u',
-            'last_name' => 'required|string|max:50|regex:/^[a-zA-Z\x{0600}-\x{06FF}. ]+$/u',
-            'apartment' => 'required|numeric',
-            'floor' => 'required|string|max:10|regex:/^[a-zA-Z\x{0600}-\x{06FF}0-20 ]+$/u',
-            'street' => 'required|string|max:25|regex:/^[a-zA-Z\x{0600}-\x{06FF}0-20 ]+$/u',
-            'building' => 'required|numeric',
-            'city' => 'required|string|max:100|regex:/^[a-zA-Z\x{0600}-\x{06FF} ]+$/u',
-            'state' => 'required|string|max:100|regex:/^[a-zA-Z\x{0600}-\x{06FF} ]+$/u',
-            'country' => 'required|string|max:100|regex:/^[a-zA-Z\x{0600}-\x{06FF} ]+$/u',
-            'postal_code' => 'required|string|min:2|max:10',
-            'phone_number' => ['required', 'string', 'regex:/^01[0125][0-9]{8}$/', Rule::unique('user_info')->ignore($this->user()->id, 'user_id')],
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'nullable|string|max:100',
+            'apartment' => 'nullable',
+            'floor' => 'nullable|string|max:50',
+            'street' => 'required|string|max:255',
+            'building' => 'nullable',
+            'city' => 'nullable|string|max:100',
+            'state' => 'nullable|string|max:100',
+            'country' => 'nullable|string|max:100',
+            'postal_code' => 'nullable|string|max:20',
+            'phone_number' => ['nullable', 'string', 'max:25'],
             'notes' => 'nullable|string|max:500',
         ];
     }

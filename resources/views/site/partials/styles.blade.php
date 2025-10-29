@@ -48,6 +48,20 @@
 <!-- custom javascript -->
 
 
+<style>
+  /* Ensure overlay never blocks clicks unless explicitly active */
+  .overlay {
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .overlay.active {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
+
 
 
 {{-- not secure --}}

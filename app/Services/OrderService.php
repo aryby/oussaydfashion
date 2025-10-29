@@ -20,17 +20,17 @@ class OrderService
                 'status'            =>  OrderStatus::PENDING->value,
                 'payment_status'    =>  PaymentStatus::PENDING->value,
                 'first_name'        =>  $request['first_name'],
-                'last_name'         =>  $request['last_name'],
-                'apartment'         =>  $request['apartment'],
-                'floor'             =>  $request['floor'],
+                'last_name'         =>  ($request['last_name'] ?? 'Maroc '),
+                'apartment'         =>  ($request['apartment'] ?? 'Maroc '),
+                'floor'             =>  ($request['floor'] ?? 'Maroc '),
                 'street'            =>  $request['street'],
-                'building'          =>  $request['building'],
-                'city'              =>  $request['city'],
-                'country'           =>  $request['country'],
-                'state'             =>  $request['state'],
-                'postal_code'       =>  $request['postal_code'],
-                'phone_number'      =>  $request['phone_number'],
-                'notes'             =>  $request['notes']
+                'building'          =>  ($request['building'] ?? 'Maroc '),
+                'city'              =>  ($request['city'] ?? 'Maroc '),
+                'country'           =>  ($request['country'] ?? 'Maroc '),
+                'state'             =>  ($request['state'] ?? 'Maroc '),
+                'postal_code'       =>  ($request['postal_code'] ?? 'Maroc '),
+                'phone_number'      =>  ($request['phone_number'] ?? 'Maroc '),
+                'notes'             =>  ($request['notes'] ?? 'Maroc ')
             ]);
 
             foreach (\Cart::session(auth()->id())->getContent()->toArray() as $item) {

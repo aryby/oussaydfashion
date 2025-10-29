@@ -7,20 +7,12 @@
             <article class="card-body">
                 <div class="form-row">
                     <div class="col form-group">
-                        <label>{{ __('First Name') }}</label><span class="required" style="color: red"> * </span>
-                        @error('first_name')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="text" required class="form-control @error('first_name') invalid @enderror"
-                            value="{{ auth()->user()->first_name }}" name="first_name">
+                        <label>{{ __('Name') }}</label><span class="required" style="color: red"> * </span>
+                        <input type="text" required class="form-control" value="{{ trim(auth()->user()->first_name . ' ' . auth()->user()->last_name) }}" name="first_name">
                     </div>
                     <div class="col form-group">
-                        <label>{{ __('Last Name') }}</label><span class="required" style="color: red"> * </span>
-                        @error('last_name')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="text" required class="form-control @error('last_name') invalid @enderror"
-                            value="{{ auth()->user()->last_name }}" name="last_name">
+                        <label>&nbsp;</label>
+                        <input type="text" class="form-control" name="last_name" value="" placeholder="{{ __('Optional') }}">
                     </div>
                     <div class="col form-group">
                         <label>{{ __('Phone Number') }}</label><span class="required" style="color: red"> * </span>
@@ -33,82 +25,34 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col">
-                        <label>{{ __('Apartment') }}</label><span class="required" style="color: red"> * </span>
-                        @error('apartment')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="number" min="0" required
-                            class="form-control @error('apartment') is-invalid @enderror" name="apartment"
-                            value="{{ old('apartment') }}">
-                    </div>
-                    <div class="form-group col">
-                        <label>{{ __('Floor') }}</label><span class="required" style="color: red"> * </span>
-                        @error('floor')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="text" required class="form-control @error('floor') is-invalid @enderror"
-                            name="floor" value="{{ old('floor') }}">
-                    </div>
-                    <div class="form-group col">
-                        <label>{{ __('Street') }}</label><span class="required" style="color: red"> * </span>
-                        @error('street')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="text" required class="form-control @error('street') is-invalid @enderror"
-                            name="street" value="{{ old('street') }}">
-                    </div>
-                    <div class="form-group col">
-                        <label>{{ __('Building') }}</label><span class="required" style="color: red"> * </span>
-                        @error('building')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="number" min="0" required
-                            class="form-control @error('building') is-invalid @enderror" name="building"
-                            value="{{ old('building') }}">
+                    <div class="form-group col-12">
+                        <label>{{ __('Address') }}</label><span class="required" style="color: red"> * </span>
+                        <input type="text" required class="form-control" name="street" value="{{ old('street') }}" placeholder="{{ __('Street, building, floor, apartment') }}">
                     </div>
                 </div>
-                <div class="form-row">
+               {{--  <div class="form-row">
                     <div class="form-group col">
-                        <label>{{ __('City') }}</label><span class="required" style="color: red"> * </span>
-                        @error('city')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="text" required class="form-control @error('city') is-invalid @enderror"
-                            name="city" value="{{ old('city') ?: auth()->user()->info?->city ?? '' }}">
+                        <label>{{ __('City') }}</label>
+                        <input type="text" class="form-control" name="city" value="{{ old('city') ?: auth()->user()->info?->city ?? '' }}" placeholder="{{ __('Optional') }}">
                     </div>
                     <div class="form-group col">
-                        <label>{{ __('State') }}</label><span class="required" style="color: red"> * </span>
-                        @error('state')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="text" required class="form-control @error('state') is-invalid @enderror"
-                            name="state" value="{{ old('state') ?: auth()->user()->info?->state ?? '' }}">
+                        <label>{{ __('State') }}</label>
+                        <input type="text" class="form-control" name="state" value="{{ old('state') ?: auth()->user()->info?->state ?? '' }}" placeholder="{{ __('Optional') }}">
                     </div>
                     <div class="form-group col">
-                        <label>{{ __('Country') }}</label><span class="required" style="color: red"> * </span>
-                        @error('country')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <select id="country" class="form-control @error('country') is-invalid @enderror"
-                            name="country">
-                            <option value="{{ old('country') ?: auth()->user()->info?->country ?? '' }}" selected>
-                                {{ old('country') ?: auth()->user()->info?->country ?? '' }}</option>
+                        <label>{{ __('Country') }}</label>
+                        <select id="country" class="form-control" name="country">
+                            <option value="">{{ __('Optional') }}</option>
                             @foreach ($countries as $key => $value)
-                                <option value="{{ $value }}">{{ $value }}</option>
+                                <option value="{{ $value }}" @if(old('country')===$value) selected @endif>{{ $value }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col">
-                        <label>{{ __('Postal Code') }}</label><span class="required" style="color: red"> * </span>
-                        @error('postal_code')
-                            <span class="required" style="color: red">{{ $message }}</span>
-                        @enderror
-                        <input type="number" required
-                            class="form-control @error('postal_code') is-invalid @enderror" name="postal_code"
-                            value="{{ old('postal_code') }}">
+                        <label>{{ __('Postal Code') }}</label>
+                        <input type="number" class="form-control" name="postal_code" value="{{ old('postal_code') }}" placeholder="{{ __('Optional') }}">
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label>{{ __('Order Notes') }}</label>
                     <textarea class="form-control" name="notes" rows="4">{{ old('notes') }}</textarea>

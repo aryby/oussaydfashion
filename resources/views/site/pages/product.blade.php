@@ -231,15 +231,13 @@
                 </div>
                 <section class="section-content padding-y-sm bg">
                     <div class="container">
-                        <header class="section-heading heading-line">
-                            <h4 class="title-section bg">{{ __('Related Products') }}</h4>
-                        </header>
-                        <div class="row">
-                            @foreach ($product->categories()
-            ?->first()
-            ?->products()->limit(5)->get()->except($product->id) as $related_product)
-                                @include('site.partials.related_products')
-                            @endforeach
+                        <div class="product-main">
+                            <h4 class="title">{{ __('Related Products') }}</h4>
+                            <div class="product-grid">
+                                @foreach ($product->categories()?->first()?->products()->limit(8)->get()->except($product->id) as $related_product)
+                                    @include('site.partials.related_products')
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </section>

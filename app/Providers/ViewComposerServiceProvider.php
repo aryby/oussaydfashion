@@ -55,5 +55,11 @@ class ViewComposerServiceProvider extends ServiceProvider
         View::composer('site.partials.recently_added_products', function ($view) {
             $view->with('recently_added_products', Product::recentlyAdded()->with(['ratings', 'offer'])->get());
         });
+
+        // Inspire sidebar (categories + a few featured products for the small list)
+        View::composer('site.partials.inspire_sidebar', function ($view) {
+            $view->with('categories', Category::orderBy('parent_id')->get()->nest())
+                ->with('featured_products', Product::featured()->limit(4)->get());
+        });
     }
 }

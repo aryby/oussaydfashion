@@ -12,7 +12,9 @@ class PayMobPaymentController extends Controller
 {
     public static function handlePayment(Order $order)
     {
-        $auth = PayMob::AuthenticationRequest();
+        //dd($order);
+        
+        /* $auth = PayMob::AuthenticationRequest();
 
         $paymob_order = PayMob::OrderRegistrationAPI([
             'auth_token' => $auth->token,
@@ -45,12 +47,12 @@ class PayMobPaymentController extends Controller
             ]
         ]);
 
-        return $paymentKey->token;
+        return $paymentKey->token; */
     }
 
     public function checkoutProcessed(Request $request)
     {
-        $request_hmac = $request->hmac;
+        /* $request_hmac = $request->hmac;
         $calc_hmac = PayMob::calcHMAC($request);
 
         if ($request_hmac == $calc_hmac) {
@@ -75,6 +77,11 @@ class PayMobPaymentController extends Controller
                     ]);
                 }
             });
-        }
+        } */
+        $order->update([
+            'payment_status' => PaymentStatus::COMPLETED->value,
+            'payment_method' => 'Card',
+            'transaction_id' => "ORD-".$order->id
+        ]);
     }
 }

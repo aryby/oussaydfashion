@@ -19,6 +19,22 @@
  
     });
     // jquery end
+    (function() {
+      function resetInspireOverlays() {
+        var overlay = document.querySelector('.overlay');
+        if (overlay) overlay.classList.remove('active');
+        document.querySelectorAll('[data-mobile-menu]').forEach(function(el){
+          el.classList.remove('active');
+        });
+      }
+      document.addEventListener('DOMContentLoaded', resetInspireOverlays);
+      if (window.Livewire) {
+        document.addEventListener('livewire:navigated', resetInspireOverlays);
+        document.addEventListener('livewire:load', function(){
+          resetInspireOverlays();
+        });
+      }
+    })();
 </script>
   {{-- be here --}}
 
