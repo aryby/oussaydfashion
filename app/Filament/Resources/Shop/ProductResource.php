@@ -36,17 +36,27 @@ class ProductResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
-    protected static ?string $navigationGroup = 'Shop';
+    protected static ?string $navigationGroup = null;
 
     protected static ?string $navigationIcon = 'heroicon-s-bolt';
 
-    protected static ?string $navigationLabel = 'Products';
+    protected static ?string $navigationLabel = null;
 
     protected static ?int $navigationSort = 3;
 
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'brand.name', 'unit_price'];
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Shop');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Products');
     }
 
     public static function getGlobalSearchResultDetails($record): array
@@ -86,12 +96,14 @@ class ProductResource extends Resource
                                     ]),
                                 Tabs\Tab::make('Arabic')
                                     ->schema([
-                                        TextInput::make('name_ar')
-                                            ->required(),
-                                        RichEditor::make('description_ar')
-                                            ->columnSpanFull(),
-                                        RichEditor::make('details_ar')
-                                            ->columnSpanFull(),
+                                                TextInput::make('name_ar')
+                                                    ->placeholder(fn ($get) => $get('name')),
+                                                RichEditor::make('description_ar')
+                                                    ->placeholder(fn ($get) => $get('description'))
+                                                    ->columnSpanFull(),
+                                                RichEditor::make('details_ar')
+                                                    ->placeholder(fn ($get) => $get('details'))
+                                                    ->columnSpanFull(),
                                     ]),
                             ])->columnSpanFull(),
 
@@ -159,7 +171,7 @@ class ProductResource extends Resource
                     ->description(fn (Product $record): string => $record->description ? Str::limit(strip_tags($record->description), 20, '...') : ''),
                 TextColumn::make('ratings_count')
                     ->counts('ratings')
-                    ->label('Ratings')
+                    ->label(__('app.Ratings'))
                     ->toggleable(),
                 TextColumn::make('brand.name'),
                 TextColumn::make('categories.name')

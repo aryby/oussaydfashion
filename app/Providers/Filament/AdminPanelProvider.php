@@ -10,6 +10,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use Filament\Navigation\MenuItem;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -44,6 +45,16 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->userMenuItems([
+                'locale-en' => MenuItem::make()
+                    ->label('English')
+                    ->url(fn (): string => route('langswitcher', ['locale' => 'en']))
+                    ->icon('heroicon-s-language'),
+                'locale-ar' => MenuItem::make()
+                    ->label('العربية')
+                    ->url(fn (): string => route('langswitcher', ['locale' => 'ar']))
+                    ->icon('heroicon-s-language'),
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -52,6 +63,7 @@ class AdminPanelProvider extends PanelProvider
                 ShareErrorsFromSession::class,
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
+                \App\Http\Middleware\SetLocale::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
