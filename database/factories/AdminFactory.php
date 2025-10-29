@@ -20,7 +20,7 @@ class AdminFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'email' => fake()->unique()->firstName() . '@' . strtolower(env('APP_NAME')) . '.com',
+            'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => Hash::make('admin@admin.com'),
             'remember_token' => Str::random(10),
