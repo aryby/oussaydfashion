@@ -10,13 +10,13 @@
                             <img src="{{ asset('storage/' . $offer->product->image) }}" alt="{{ $offer->title }}"
                                 class="banner-img">
                             <div class="banner-content">
-                                <p class="banner-subtitle">{{ $offer->title }}</p>
-                                <h2 class="banner-title">{{ $offer->product->name }}</h2>
+                                <p class="banner-subtitle">@lang($offer->title)</p>
+                                <h2 class="banner-title">@lang($offer->product->name)</h2>
                                 <p class="banner-text">
-                                    starting at &dollar; <b>{{ $offer->price }}</b>.00
+                                    @lang("starting at") &dollar; <b>{{ $offer->price }}</b>.00
                                 </p>
-                                <a href="{{ route('products.show', $offer->product->slug) }}" class="banner-btn">Shop
-                                    now</a>
+                                <a href="{{ route('products.show', $offer->product->slug) }}" class="banner-btn">@lang("Shop
+                                    now")</a>
                             </div>
                         </div>
                     @endforeach
@@ -37,10 +37,10 @@
                             </div>
                             <div class="category-content-box">
                                 <div class="category-content-flex">
-                                    <h3 class="category-item-title">{{ $category->name }}</h3>
+                                    <h3 class="category-item-title">@lang($category->name)</h3>
                                     <p class="category-item-amount">({{ $category->products->count() }})</p>
                                 </div>
-                                <a href="{{ route('categories.show', $category->slug) }}" class="category-btn">Show all</a>
+                                <a href="{{ route('categories.show', $category->slug) }}" class="category-btn">@lang("Show all")</a>
                             </div>
                         </div>
                     @endforeach
@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="product-box">
                     <div class="product-main">
-                        <h2 class="title">New Products</h2>
+                        <h2 class="title">@lang("New Products")</h2>
                         <div class="product-grid">
                             @foreach ($recently_added_products as $product)
                                 <div class="showcase">
@@ -90,9 +90,9 @@
                                     </div>
                                     <div class="showcase-content">
                                         <a href="{{ route('categories.show', $product->categories->first()->slug) }}"
-                                            class="showcase-category">{{ $product->categories->first()->name }}</a>
+                                            class="showcase-category">@lang($product->categories->first()->name)</a>
                                         <a href="{{ route('products.show', $product->slug) }}">
-                                            <h3 class="showcase-title">{{ $product->name }}</h3>
+                                            <h3 class="showcase-title">@lang($product->name)</h3>
                                         </a>
                                         <div class="showcase-rating">
                                             @for ($i = 0; $i < floor($product->ratings->avg('rating')); $i++)

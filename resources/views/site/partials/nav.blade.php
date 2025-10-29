@@ -34,10 +34,9 @@
                     <option value="usd">USD &dollar;</option>
                     <option value="eur">EUR &euro;</option>
                 </select>
-                <select name="language">
-                    <option value="en-US">English</option>
-                    <option value="es-ES">Espa&ntilde;ol</option>
-                    <option value="fr">Fran&ccedil;ais</option>
+                <select name="language" onchange="location = this.value;">
+                    <option value="{{ route('langswitcher', 'en') }}" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                    <option value="{{ route('langswitcher', 'ar') }}" {{ app()->getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
                 </select>
             </div>
         </div>

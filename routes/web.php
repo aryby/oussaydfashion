@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageSwitcherController;
 use App\Http\Controllers\PayPalPaymentController;
 use Illuminate\Support\Facades\Session;
@@ -30,7 +31,7 @@ Route::get('/', function () {
 Route::get('lang/{locale}', LanguageSwitcherController::class)->name('langswitcher');
 
 
-Route::view('/', 'site.pages.home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/orders/{order}/invoice', InvoiceController::class)
     ->name('order.invoice');
