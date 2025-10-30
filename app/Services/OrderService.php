@@ -6,6 +6,7 @@ use App\Enums\OrderStatus;
 use App\Enums\PaymentStatus;
 use App\Models\Order;
 use App\Models\OrderItem;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class OrderService
@@ -15,8 +16,8 @@ class OrderService
         $order = DB::transaction(function () use ($request) {
             $order = Order::create([
                 'number'            =>  'ORD-' . strtoupper(uniqid()),
-                'user_id'           =>  auth()->id(),
-                'grand_total'       =>  config('settings.shipping_cost.value') > 0 ? \Cart::session(auth()->id())->getSubTotal() + intval(config('settings.shipping_cost.value')) : \Cart::session(auth()->id())->getSubTotal(),
+                'user_id'           =>  Auth::id(),
+                'grand_total'       =>  config('settings.shipping_cost.value') > 0 ? \Cart::session(Auth::id())->getSubTotal() + intval(config('settings.shipping_cost.value')) : \Cart::session(Auth::id())->getSubTotal(),
                 'status'            =>  OrderStatus::PENDING->value,
                 'payment_status'    =>  PaymentStatus::PENDING->value,
                 'first_name'        =>  $request['first_name'],

@@ -49,12 +49,12 @@
         <div class="container"> <a href="/" class="header-logo">
                 {{-- <img src="{{ asset('inspire/assets/images/logo/logo.jpg') }}" alt="Anon's logo" width="120"
                     height="36"> --}}
-                    @if (config('settings.site_logo.attachment') != null)
-    <img src="{{ asset('uploads/' . config('settings.site_logo.attachment')) }}" alt="" width="120"
-        height="50">
-@else
-    <b>{{ config('settings.site_title.value') }}</b>
-@endif
+                @if (config('settings.site_logo.attachment') != null)
+                    <img src="{{ asset('uploads/' . config('settings.site_logo.attachment')) }}" alt=""
+                        width="120" height="50">
+                @else
+                    <b>{{ config('settings.site_title.value') }}</b>
+                @endif
             </a>
             <div class="header-search-container">
                 <form action="{{ route('products.search') }}" class="search-wrap">
@@ -76,6 +76,7 @@
                 </button> --}} {{-- her --}}
                 <div class="widgets-wrap d-flex justify-content-end">
                     @auth
+                        @include('site.partials.wishlist_widget')
                         @include('site.partials.cart_widget')
                     @endauth
                     @include('site.partials.user_widget')

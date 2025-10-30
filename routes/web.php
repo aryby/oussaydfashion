@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageSwitcherController;
 use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -88,6 +89,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cart/clear', [CartController::class, 'clear'])
         ->name('cart.clear');
+
+    // Wishlist
+    Route::get('/wishlist', [WishlistController::class, 'index'])
+        ->name('wishlist.index');
+
+    Route::post('/wishlist/add', [WishlistController::class, 'addItem'])
+        ->name('wishlist.addItem');
+
+    Route::get('/wishlist/item/{id}/remove', [WishlistController::class, 'removeItem'])
+        ->name('wishlist.removeItem');
 
     // Account orders
     Route::get('account/orders', [AccountController::class, 'getOrders'])

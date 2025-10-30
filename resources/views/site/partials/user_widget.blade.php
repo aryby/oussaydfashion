@@ -1,3 +1,4 @@
+<?php use Illuminate\Support\Str; ?>
 <div class="widget-header dropdown">
     <a href="#" class="ml-3 icontext" data-toggle="dropdown" data-offset="20,10">
         {{-- <div class="icon-wrap icon-xs bg2 round text-secondary">
@@ -19,7 +20,10 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
         @auth
-            <a class="dropdown-item" href="{{ route('account.edit') }}">{{ __('My Account') }}</a>
+            @php
+                $myAccountRoute = (auth()->user() && Str::startsWith(auth()->user()->email, 'guest_')) ? route('register') : route('account.edit');
+            @endphp
+            <a class="dropdown-item" href="{{ $myAccountRoute }}">{{ __('My Account') }}</a>
             <a class="dropdown-item" href="{{ route('account.orders') }}">{{ __('My Orders') }}</a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

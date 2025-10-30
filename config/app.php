@@ -170,6 +170,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
         App\Providers\SettingServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,

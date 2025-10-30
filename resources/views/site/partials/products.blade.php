@@ -26,9 +26,13 @@
 
         <div class="showcase-actions">
 
-            <button class="btn-action">
-                <ion-icon name="heart-outline"></ion-icon>
-            </button>
+            <form action="{{ route('wishlist.addItem') }}" method="POST">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button class="btn-action" type="submit">
+                    <ion-icon name="heart-outline"></ion-icon>
+                </button>
+            </form>
 
             <a href="{{ route('products.show', $product->slug) }}" class="btn-action">
                 <ion-icon name="eye-outline"></ion-icon>
