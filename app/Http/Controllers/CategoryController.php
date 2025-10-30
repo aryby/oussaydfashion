@@ -12,4 +12,10 @@ class CategoryController extends Controller
         $brands = Brand::all();
         return view('site.pages.collection', compact('category', 'brands'));
     }
+
+    public function index()
+    {
+        $categories = Category::all();
+        return view('site.pages.products.categories', compact('categories'));
+    }
 }

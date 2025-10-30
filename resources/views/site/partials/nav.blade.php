@@ -21,9 +21,9 @@
                         </li>
                     @else
                         <li class="nav-item dropdown has-megamenu">
-                            <a class="nav-link dropdown-toggle"
-                                href="{{ route('categories.show', $category->slug) }}" id="dropdown07"
-                                data-bs-toggle="dropdown" aria-expanded="false">{{ app()->getLocale() == 'ar' ? $category->name_ar : $category->name }}
+                            <a class="nav-link dropdown-toggle" href="{{ route('categories.show', $category->slug) }}"
+                                id="dropdown07" data-bs-toggle="dropdown"
+                                aria-expanded="false">{{ app()->getLocale() == 'ar' ? $category->name_ar : $category->name }}
                             </a>
                             <div class="dropdown-menu megamenu" role="menu" aria-labelledby="dropdown07">
                                 <div class="row">

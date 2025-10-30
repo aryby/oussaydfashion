@@ -39,6 +39,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/categories', [CategoryController::class, 'index'])
+    ->name('products.categories');
+
 // Categories
 Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])
     ->name('categories.show');
@@ -50,6 +53,24 @@ Route::get('/products/{product:slug}', [ProductController::class, 'show'])
 Route::get('/search', [ProductController::class, 'search'])
     ->name('products.search');
 
+
+Route::get('/products/prices-drop', function () { return view('site.pages.products.prices_drop'); })->name('products.prices_drop');
+Route::get('/products/new', function () { return view('site.pages.products.new'); })->name('products.new');
+Route::get('/products/best-sales', function () { return view('site.pages.products.bestsales'); })->name('products.bestsales');
+Route::get('/contact', function () { return view('site.pages.contact.index'); })->name('contact.index');
+Route::get('/sitemap', function () { return view('site.pages.sitemap.index'); })->name('sitemap.index');
+
+Route::get('/delivery-info', function () { return view('site.pages.company.delivery_info'); })->name('delivery.info');
+Route::get('/legal-notice', function () { return view('site.pages.company.legal_notice'); })->name('legal.notice');
+Route::get('/terms-conditions', function () { return view('site.pages.company.terms_conditions'); })->name('terms.conditions');
+Route::get('/about-us', function () { return view('site.pages.company.about_us'); })->name('about.us');
+Route::get('/secure-payment', function () { return view('site.pages.company.secure_payment'); })->name('secure.payment');
+
+Route::get('/services/returns', function () { return view('site.pages.services.returns'); })->name('services.returns');
+Route::get('/services/faq', function () { return view('site.pages.services.faq'); })->name('services.faq');
+Route::get('/services/shipping', function () { return view('site.pages.services.shipping'); })->name('services.shipping');
+Route::get('/services/warranty', function () { return view('site.pages.services.warranty'); })->name('services.warranty');
+Route::get('/services/gift-cards', function () { return view('site.pages.services.gift_cards'); })->name('services.gift_cards');
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'edit'])->name('account.edit');

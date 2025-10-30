@@ -13,12 +13,6 @@
 <script type="text/javascript">
     /// some script
 
-    // jquery ready start
-    $(document).ready(function() {
-        // jQuery code
- 
-    });
-    // jquery end
     (function() {
       function resetInspireOverlays() {
         var overlay = document.querySelector('.overlay');
@@ -38,69 +32,7 @@
 </script>
   {{-- be here --}}
 
-{{-- 
-<footer class="section-footer bg-dark white">
-    <div class="container">
-        <section class="footer-top padding-top">
-            <div class="row">
-                <aside class="col-sm-3  col-md-3 white">
-                    @auth
-                        <h5 class="title">{{ __('My Account') }}</h5>
-                        <ul class="list-unstyled">
-                            <li> <a href="{{ route('account.edit') }}"> {{ __('Account Setting') }} </a></li>
-                            <li> <a href="{{ route('account.orders') }}"> {{ __('My Orders') }} </a></li>
-                            <li> <a href="{{ route('cart.index') }}"> {{ __('My Cart') }} </a></li>
-                        </ul>
-                    @else
-                        <h5 class="title">{{ __('Account') }}</h5>
-                        <ul class="list-unstyled">
-                            <li> <a href="{{ route('register') }}"> {{ __('User Registration') }} </a></li>
-                        </ul>
-                    @endauth
-                </aside>
-                <aside class="col-sm-3">
-                    <article class="white">
-                        <h5 class="title">{{ __('Contact Us') }}</h5>
-                        <p>
-                            <strong>{{ __('Phone') }}:</strong> {{ config('settings.phone.value') }}
-                            <br>
-                            <strong>{{ __('Fax') }}:</strong> {{ config('settings.fax.value') }}
-                        </p>
 
-                        <div class="btn-group white">
-                            <a href="{{ config('settings.social_facebook.value') }}" class="btn btn-facebook"
-                                title="Facebook" target="_blank"><i class="fab fa-facebook-f  fa-fw"></i></a>
-                            <a class="btn btn-instagram" title="Instagram" target="_blank"
-                                href="{{ config('settings.social_instagram.value') }}"><i
-                                    class="fab fa-instagram  fa-fw"></i></a>
-                            <a class="btn btn-twitter" title="Twitter" target="_blank"
-                                href="{{ config('settings.social_twitter.value') }}"><i
-                                    class="fab fa-twitter  fa-fw"></i></a>
-                        </div>
-                    </article>
-                </aside>
-            </div>
-            <br>
-        </section>
-        <section class="footer-bottom row border-top-white">
-            <div class="col-sm-6">
-                <p class="text-white-50"> {{ __('Made by') }}
-                    <br> Kareem Aladawy
-                </p>
-            </div>
-            <div class="col-sm-6">
-                <p class="text-md-right text-white-50">
-                    {{ __('Copyright') }} &copy
-                    <br>
-                    <a href="http://bootstrap-ecommerce.com" class="text-white-50">Bootstrap-ecommerce UI kit</a>
-                </p>
-            </div>
-        </section>
-        <!-- //footer-top -->
-    </div>
-    <!-- //container -->
-</footer>
- --}}
 
  
   <footer>
@@ -112,69 +44,8 @@
         <h2 class="footer-category-title">Brand directory</h2>
 
         <div class="footer-category-box">
-
-          <h3 class="category-box-title">Fashion :</h3>
-
-          <a href="#" class="footer-category-link">T-shirt</a>
-          <a href="#" class="footer-category-link">Shirts</a>
-          <a href="#" class="footer-category-link">shorts & jeans</a>
-          <a href="#" class="footer-category-link">jacket</a>
-          <a href="#" class="footer-category-link">dress & frock</a>
-          <a href="#" class="footer-category-link">innerwear</a>
-          <a href="#" class="footer-category-link">hosiery</a>
-
-        </div>
-
-        <div class="footer-category-box">
-          <h3 class="category-box-title">footwear :</h3>
-
-          <a href="#" class="footer-category-link">sport</a>
-          <a href="#" class="footer-category-link">formal</a>
-          <a href="#" class="footer-category-link">Boots</a>
-          <a href="#" class="footer-category-link">casual</a>
-          <a href="#" class="footer-category-link">cowboy shoes</a>
-          <a href="#" class="footer-category-link">safety shoes</a>
-          <a href="#" class="footer-category-link">Party wear shoes</a>
-          <a href="#" class="footer-category-link">Branded</a>
-          <a href="#" class="footer-category-link">Firstcopy</a>
-          <a href="#" class="footer-category-link">Long shoes</a>
-        </div>
-
-        <div class="footer-category-box">
-          <h3 class="category-box-title">jewellery :</h3>
-
-          <a href="#" class="footer-category-link">Necklace</a>
-          <a href="#" class="footer-category-link">Earrings</a>
-          <a href="#" class="footer-category-link">Couple rings</a>
-          <a href="#" class="footer-category-link">Pendants</a>
-          <a href="#" class="footer-category-link">Crystal</a>
-          <a href="#" class="footer-category-link">Bangles</a>
-          <a href="#" class="footer-category-link">bracelets</a>
-          <a href="#" class="footer-category-link">nosepin</a>
-          <a href="#" class="footer-category-link">chain</a>
-          <a href="#" class="footer-category-link">Earrings</a>
-          <a href="#" class="footer-category-link">Couple rings</a>
-        </div>
-
-        <div class="footer-category-box">
-          <h3 class="category-box-title">cosmetics :</h3>
-
-          <a href="#" class="footer-category-link">Shampoo</a>
-          <a href="#" class="footer-category-link">Bodywash</a>
-          <a href="#" class="footer-category-link">Facewash</a>
-          <a href="#" class="footer-category-link">makeup kit</a>
-          <a href="#" class="footer-category-link">liner</a>
-          <a href="#" class="footer-category-link">lipstick</a>
-          <a href="#" class="footer-category-link">prefume</a>
-          <a href="#" class="footer-category-link">Body soap</a>
-          <a href="#" class="footer-category-link">scrub</a>
-          <a href="#" class="footer-category-link">hair gel</a>
-          <a href="#" class="footer-category-link">hair colors</a>
-          <a href="#" class="footer-category-link">hair dye</a>
-          <a href="#" class="footer-category-link">sunscreen</a>
-          <a href="#" class="footer-category-link">skin loson</a>
-          <a href="#" class="footer-category-link">liner</a>
-          <a href="#" class="footer-category-link">lipstick</a>
+          <h3 class="category-box-title">Shop by Category :</h3>
+          <a href="{{ route('products.categories') }}" class="footer-category-link">All Categories</a>
         </div>
 
       </div>
@@ -190,26 +61,14 @@
           <li class="footer-nav-item">
             <h2 class="nav-title">Popular Categories</h2>
           </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Fashion</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Electronic</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Cosmetic</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Health</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Watches</a>
-          </li>
+          @php
+            $categories = App\Models\Category::where('menu', true)->get();
+          @endphp
+          @foreach($categories as $category)
+            <li class="footer-nav-item">
+              <a href="{{ route('categories.show', $category->slug) }}" class="footer-nav-link">{{ $category->name }}</a>
+            </li>
+          @endforeach
 
         </ul>
 
@@ -220,23 +79,23 @@
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
+            <a href="{{ route('products.prices_drop') }}" class="footer-nav-link">Prices drop</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
+            <a href="{{ route('products.new') }}" class="footer-nav-link">New products</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
+            <a href="{{ route('products.bestsales') }}" class="footer-nav-link">Best sales</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
+            <a href="{{ route('contact.index') }}" class="footer-nav-link">Contact us</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
+            <a href="{{ route('sitemap.index') }}" class="footer-nav-link">Sitemap</a>
           </li>
 
         </ul>
@@ -248,23 +107,23 @@
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Delivery</a>
+            <a href="{{ route('delivery.info') }}" class="footer-nav-link">Delivery</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Legal Notice</a>
+            <a href="{{ route('legal.notice') }}" class="footer-nav-link">Legal Notice</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Terms and conditions</a>
+            <a href="{{ route('terms.conditions') }}" class="footer-nav-link">Terms and conditions</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">About us</a>
+            <a href="{{ route('about.us') }}" class="footer-nav-link">About us</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Secure payment</a>
+            <a href="{{ route('secure.payment') }}" class="footer-nav-link">Secure payment</a>
           </li>
 
         </ul>
@@ -276,23 +135,23 @@
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Prices drop</a>
+            <a href="{{ route('services.returns') }}" class="footer-nav-link">Returns & Refunds</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">New products</a>
+            <a href="{{ route('services.faq') }}" class="footer-nav-link">FAQ</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Best sales</a>
+            <a href="{{ route('services.shipping') }}" class="footer-nav-link">Shipping Info</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Contact us</a>
+            <a href="{{ route('services.warranty') }}" class="footer-nav-link">Warranty</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Sitemap</a>
+            <a href="{{ route('services.gift_cards') }}" class="footer-nav-link">Gift Cards</a>
           </li>
 
         </ul>
