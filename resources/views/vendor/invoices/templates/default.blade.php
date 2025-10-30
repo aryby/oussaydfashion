@@ -3,10 +3,11 @@
     <head>
         <title>{{ $invoice->name }}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
+        
         <style type="text/css" media="screen">
+        @import url(https://fonts.googleapis.com/earlyaccess/lateef.css);
             html {
-                font-family: sans-serif;
+                font-family: 'Droid Arabic Naskh',  sans-serif;
                 line-height: 1.15;
                 margin: 0;
             }
@@ -16,10 +17,20 @@
                 font-weight: 400;
                 line-height: 1.5;
                 color: #212529;
-                text-align: left;
                 background-color: #fff;
                 font-size: 10px;
                 margin: 36pt;
+                
+
+                
+                @if( str_replace('_', '-', app()->getLocale()) == 'ar')
+                    direction: rtl;
+                    text-align: right;
+                     font-family: 'Amiri';
+                    
+                @else
+                    text-align: left;
+                @endif
             }
 
             h4 {
@@ -131,7 +142,15 @@
     <body>
         {{-- Header --}}
         @if($invoice->logo)
-            <img src="{{ $invoice->getLogo() }}" alt="logo" height="100">
+            @php
+                $publicImagePath = 'uploads/' . $invoice->logo;
+                $fullPublicPath = public_path($publicImagePath);
+            @endphp
+            @if(file_exists($fullPublicPath))
+                <img src="{{ asset($publicImagePath) }}" alt="logo" height="100">
+            @else
+                <div style="width: 100px; height: 100px; background-color: black;"></div>
+            @endif
         @endif
 
         <table class="table mt-5">
@@ -240,9 +259,13 @@
                         @endif
 
                         @foreach($invoice->buyer->custom_fields as $key => $value)
-                            <p class="buyer-custom-field">
+                            @if (ucfirst($key) !== 'City' && ucfirst($key) !== 'State' && ucfirst($key) !== 'Country')
+                                <p class="buyer-custom-field">
                                 {{ ucfirst($key) }}: {{ $value }}
                             </p>
+                                
+                            @endif
+                            
                         @endforeach
                     </td>
                 </tr>
