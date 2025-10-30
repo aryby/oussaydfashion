@@ -72,17 +72,16 @@ Route::get('/services/shipping', function () { return view('site.pages.services.
 Route::get('/services/warranty', function () { return view('site.pages.services.warranty'); })->name('services.warranty');
 Route::get('/services/gift-cards', function () { return view('site.pages.services.gift_cards'); })->name('services.gift_cards');
 
+Route::get('/cart', [CartController::class, 'get'])
+    ->name('cart.index');
+
+Route::post('/cart/add', [CartController::class, 'addItem'])
+    ->name('cart.addItem');
+
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'edit'])->name('account.edit');
     Route::patch('/account', [ProfileController::class, 'update'])->name('account.update');
     Route::delete('/account', [ProfileController::class, 'destroy'])->name('account.destroy');
-
-    // Cart
-    Route::get('/cart', [CartController::class, 'get'])
-        ->name('cart.index');
-
-    Route::post('/cart/add', [CartController::class, 'addItem'])
-        ->name('cart.addItem');
 
     Route::get('/cart/item/{id}/remove', [CartController::class, 'removeItem'])
         ->name('cart.removeItem');

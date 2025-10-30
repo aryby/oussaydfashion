@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -14,6 +17,16 @@ class CartController extends Controller
 
     public function addItem(Request $request)
     {
+        if (!Auth::check()) {
+            $guestUser = User::create([
+                'first_name' => 'Guest',
+                'last_name' => 'User',
+                'email' => 'guest_' . Str::random(10) . '@example.com',
+                'password' => bcrypt(Str::random(10)),
+            ]);
+            Auth::login($guestUser);
+        }
+
         $product = Product::find($request->input('product_id'));
         $attributes = $request->except('_token', 'product_id', 'unit_price', 'qty');
 

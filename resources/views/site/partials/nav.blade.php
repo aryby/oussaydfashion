@@ -3,7 +3,8 @@
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav"
             aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            {{-- <span class="navbar-toggler-icon"></span> --}}
+            <i class="fa fa-bars"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="main_nav">

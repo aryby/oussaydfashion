@@ -26,7 +26,8 @@
 <link href="{{ secure_asset('assets/css/responsive.css') }}" rel="stylesheet"
     media="only screen and (max-width: 1200px)" />
 
-
+<link href="{{ secure_asset('assets/css/soft-design-system.min.css') }}" 
+rel="stylesheet" />
     <!--
     - favicon
   -->
