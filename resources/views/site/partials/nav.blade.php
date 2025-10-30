@@ -9,6 +9,9 @@
 
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                </li>
                 @forelse ($categories as $category)
                     @if ($category->items->isEmpty())
                         <li class="nav-item font-weight-normal">

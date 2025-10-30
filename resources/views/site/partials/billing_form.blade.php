@@ -11,17 +11,16 @@
                         <input type="text" required class="form-control" value="{{ trim(auth()->user()->first_name . ' ' . auth()->user()->last_name) }}" name="first_name">
                     </div>
                     <div class="col form-group">
-                        <label>&nbsp;</label>
-                        <input type="text" class="form-control" name="last_name" value="" placeholder="{{ __('Optional') }}">
+                        <label>Email &nbsp;</label>
+                        <input type="email" class="form-control" name="emaail" value="" placeholder="{{ __('email') }}">
                     </div>
                     <div class="col form-group">
                         <label>{{ __('Phone Number') }}</label><span class="required" style="color: red"> * </span>
                         @error('phone_number')
                             <span class="required" style="color: red">{{ $message }}</span>
                         @enderror
-                        <input type="text" class="form-control @error('phone_number') invalid @enderror"
-                            name="phone_number" @if (auth()->user()->info?->phone_number) readonly @endif
-                            value="{{ old('phone_number') ?: auth()->user()->info?->phone_number }}">
+                        <input type="text" class="form-control @error('phone_number') @enderror"
+                            name="phone_number">
                     </div>
                 </div>
                 <div class="form-row">

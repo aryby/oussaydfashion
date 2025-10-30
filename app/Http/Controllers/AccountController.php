@@ -9,7 +9,6 @@ class AccountController extends Controller
     public function getOrders()
     {
         $orders = Order::where('user_id', auth()->id())
-            ->where('status', '!=', 'pending')
             ->orderBy('created_at', 'desc')
             ->get();
 

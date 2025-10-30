@@ -40,11 +40,11 @@
                                 <button type="submit" id="loginButton"
                                     class="btn btn-dark btn-block">{{ __('Login') }}</button>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <a class="btn btn-info btn-block" href="{{ route('socialite.auth', 'google') }}">
                                     {{ __('Or Login with Google') }}
                                 </a>
-                            </div>
+                            </div> --}}
                         </form>
                     </article>
                     <div class="border-top card-body text-center"><a

@@ -117,6 +117,10 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/checkout/success/{order}', function (\App\Models\Order $order) {
             \Cart::session(auth()->id())->clear();
+            $user = $order->customer; // Use the customer relationship to get the user
+            if ($user) {
+                \Illuminate\Support\Facades\Auth::login($user); // Ensure the user is logged in before redirecting
+            }
             return to_route('account.orders')->with('success', 'Order #' . $order->order_number . ' has been placed successfully!');
         })->name('checkout.success');
     });
