@@ -21,11 +21,13 @@
     <div class="dropdown-menu dropdown-menu-right">
         @auth
             @php
-                $myAccountRoute = (auth()->user() && Str::startsWith(auth()->user()->email, 'guest_')) ? route('register') : route('account.edit');
+                $myAccountRoute = (Str::startsWith(auth()->user()->email, 'guest_')) ? route('login') : route('account.edit');
             @endphp
             <a class="dropdown-item" href="{{ $myAccountRoute }}">{{ __('My Account') }}</a>
+            
             <a class="dropdown-item" href="{{ route('account.orders') }}">{{ __('My Orders') }}</a>
-            <form method="POST" action="{{ route('logout') }}">
+            @if (!Str::startsWith(auth()->user()->email, 'guest_')) 
+                <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <x-dropdown-link :href="route('logout')"
                     onclick="event.preventDefault();
@@ -33,6 +35,8 @@
                     {{ __('Log Out') }}
                 </x-dropdown-link>
             </form>
+            @endif
+            
         @else
             <form action="{{ route('login') }}" method="POST" role="form" class="px-4 py-3">
                 @csrf

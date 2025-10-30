@@ -13,6 +13,6 @@
 
 
 <a href="{{ route('cart.index') }}" class="action-btn">
-    <ion-icon name="heart-outline"></ion-icon>
+    <ion-icon name="cart-outline"></ion-icon>
     <span class="count">{{ $cart_count }} </span>
 </a>
