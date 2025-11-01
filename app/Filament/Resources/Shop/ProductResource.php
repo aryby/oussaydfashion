@@ -121,9 +121,20 @@ class ProductResource extends Resource
                             ]),
                         Select::make('categories')
                             ->relationship('categories', 'name')
-                            ->options(Category::orderByRaw('-name ASC')->get()->nest()->listsFlattened('name'))
-                            ->required()
                             ->multiple()
+                            ->preload()
+                            ->searchable()
+                            ->required()
+                            ->createOptionForm([
+                                TextInput::make('name')
+                                    ->required()
+                                    ->unique(ignoreRecord: true),
+                                TextInput::make('name_ar'),
+                                Select::make('parent_id')
+                                    ->relationship('parent', 'name')
+                                    ->preload()
+                                    ->searchable()
+                            ])
                             ->maxItems(3),
                         Section::make('Images')
                             ->schema([
