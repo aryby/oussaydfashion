@@ -13,7 +13,10 @@
                 <button class="sidebar-accordion-menu" data-accordion-btn>
                     <div class="menu-title-flex">
                         <img src="{{ asset('inspire/assets/images/icons/bag.svg') }}" alt="icon" width="20" height="20" class="menu-title-img">
-                        <p class="menu-title">{{ app()->getLocale() == 'ar' ? ($category->name_ar ?: $category->name) : $category->name }}</p>
+                        <div class="category-content-flex">
+                            <p class="menu-title">{{ app()->getLocale() == 'ar' ? ($category->name_ar ?: $category->name) : $category->name }}</p>
+                            <p class="category-item-amount">({{ $category->products->count() }})</p>
+                        </div>
                     </div>
                     <div>
                         <ion-icon name="add-outline" class="add-icon"></ion-icon>

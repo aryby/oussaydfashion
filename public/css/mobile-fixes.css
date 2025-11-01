@@ -1,0 +1,26 @@
+/* Styles pour les textarea sur mobile */
+
+textarea {
+    min-height: 100px !important;
+    resize: vertical !important;
+}
+
+
+/* Ajustements pour les inputs sur mobile */
+
+@media screen and (max-width: 767px) {
+    textarea {
+        font-size: 16px !important;
+        /* Empêche le zoom automatique sur iOS */
+        line-height: 1.4 !important;
+        padding: 10px !important;
+    }
+    .fi-fo-field-wrp {
+        margin-bottom: 1.5rem !important;
+    }
+    /* Amélioration de l'espacement des étiquettes */
+    .fi-fo-field-wrp label {
+        margin-bottom: 0.5rem !important;
+        display: block !important;
+    }
+}
