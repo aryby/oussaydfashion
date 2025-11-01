@@ -26,6 +26,16 @@ class BrandResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-s-bookmark-square';
 
     protected static ?int $navigationSort = 5;
+    
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Brands');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Shop');
+    }
 
     public static function form(Form $form): Form
     {

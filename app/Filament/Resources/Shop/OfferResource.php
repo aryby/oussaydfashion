@@ -30,6 +30,16 @@ class OfferResource extends Resource
 
     protected static ?int $navigationSort = 7;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Offers');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Shop');
+    }
+
     public static function getGloballySearchableAttributes(): array
     {
         return ['discount_percentage', 'product.name'];
@@ -48,17 +58,20 @@ class OfferResource extends Resource
         return $form
             ->schema([
                 FileUpload::make('image')
+                    ->label(__('app.image'))
                     ->required()
                     ->columnSpanFull()
                     ->directory('uploads')
                     ->visibility('public')
                     ->placeholder('Preferred Size: 690x255'),
                 Select::make('product_id')
+                    ->label(__('app.Products'))
                     ->required()
                     ->relationship('product', 'name')
                     ->options(Product::all()->pluck('name', 'id'))
                     ->searchable(),
                 TextInput::make('discount_percentage')
+                    ->label(__('app.discount_percentage'))
                     ->required()
                     ->numeric()
                     ->inputMode('decimal')

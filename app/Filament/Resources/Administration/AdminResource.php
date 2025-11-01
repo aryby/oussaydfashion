@@ -20,6 +20,16 @@ class AdminResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-s-building-library';
 
     protected static ?string $navigationGroup = 'Administration';
+    
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Admins');
+    }
+    
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Administration');
+    }
 
     public static function form(Form $form): Form
     {

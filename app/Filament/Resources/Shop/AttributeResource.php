@@ -27,6 +27,16 @@ class AttributeResource extends Resource
 
     protected static ?int $navigationSort = 6;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Attributes');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Shop');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -37,11 +47,13 @@ class AttributeResource extends Resource
                         Tab::make('English')
                             ->schema([
                                 TextInput::make('name')
+                                    ->label(__('app.name'))
                                     ->required(),
                             ]),
                         Tab::make('Arabic')
                             ->schema([
                                 TextInput::make('name_ar')
+                                    ->label(__('app.name_ar'))
                                     ->required(),
                             ]),
                     ])->columnSpanFull(),
