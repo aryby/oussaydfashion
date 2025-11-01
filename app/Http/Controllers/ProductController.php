@@ -32,4 +32,31 @@ class ProductController extends Controller
             ]);
         }
     }
+
+    public function pricesDrop()
+    {
+        $products = Product::whereNotNull('sale_price')
+            ->with(['ratings', 'offer'])
+            ->get();
+        
+        return view('site.pages.products.prices_drop', compact('products'));
+    }
+
+    public function new()
+    {
+        $products = Product::recentlyAdded()
+            ->with(['ratings', 'offer'])
+            ->get();
+        
+        return view('site.pages.products.new', compact('products'));
+    }
+
+    public function bestSales()
+    {
+        $products = Product::featured()
+            ->with(['ratings', 'offer'])
+            ->get();
+        
+        return view('site.pages.products.bestsales', compact('products'));
+    }
 }

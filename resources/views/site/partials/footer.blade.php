@@ -159,70 +159,61 @@
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">Contact</h2>
+            <h2 class="nav-title">{{ __('Contact') }}</h2>
           </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <address class="content">
-              419 State 414 Rte
-              Beaver Dams, New York(NY), 14812, USA
-            </address>
-          </li>
-
+          @if(config('settings.phone_enquiry.value'))
           <li class="footer-nav-item flex">
             <div class="icon-box">
               <ion-icon name="call-outline"></ion-icon>
             </div>
 
-            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+            <a href="tel:{{ config('settings.phone_enquiry.value') }}" class="footer-nav-link">{{ config('settings.phone_enquiry.value') }}</a>
           </li>
-
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
-          </li>
+          @endif
 
         </ul>
 
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">Follow Us</h2>
+            <h2 class="nav-title">{{ __('Follow Us') }}</h2>
           </li>
 
           <li>
             <ul class="social-link">
 
+              @if(config('settings.social_facebook.value'))
               <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
+                <a href="{{ config('settings.social_facebook.value') }}" class="footer-nav-link" target="_blank" rel="noopener noreferrer">
                   <ion-icon name="logo-facebook"></ion-icon>
                 </a>
               </li>
+              @endif
 
+              @if(config('settings.social_twitter.value'))
               <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
+                <a href="{{ config('settings.social_twitter.value') }}" class="footer-nav-link" target="_blank" rel="noopener noreferrer">
                   <ion-icon name="logo-twitter"></ion-icon>
                 </a>
               </li>
+              @endif
 
+              @if(config('settings.social_linkedin.value'))
               <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
+                <a href="{{ config('settings.social_linkedin.value') }}" class="footer-nav-link" target="_blank" rel="noopener noreferrer">
                   <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
               </li>
+              @endif
 
+              @if(config('settings.social_instagram.value'))
               <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
+                <a href="{{ config('settings.social_instagram.value') }}" class="footer-nav-link" target="_blank" rel="noopener noreferrer">
                   <ion-icon name="logo-instagram"></ion-icon>
                 </a>
               </li>
+              @endif
 
             </ul>
           </li>
@@ -236,11 +227,8 @@
     <div class="footer-bottom">
 
       <div class="container">
-
-        <img src=".{{ asset('inspire/assets/images/payment.png') }}" alt="payment method" class="payment-img">
-
         <p class="copyright">
-          Copyright &copy; <a href="#">Anon</a> all rights reserved.
+          Copyright &copy; {{ date('Y') }} <a href="/">{{ config('settings.site_title.value') ?: 'Store' }}</a> all rights reserved.
         </p>
 
       </div>

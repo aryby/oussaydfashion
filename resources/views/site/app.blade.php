@@ -19,6 +19,7 @@
     @include('site.partials.subscribe')
     @include('site.partials.footer')
 
+    @include('site.partials.bottom-bar')
     @livewireScripts()
     @stack('scripts')
 </body>

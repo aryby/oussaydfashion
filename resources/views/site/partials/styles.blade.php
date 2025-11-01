@@ -61,5 +61,90 @@ rel="stylesheet" />
     opacity: 1;
     visibility: visible;
   }
+
+  /* Mobile Bottom Navigation */
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+    height: 60px;
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 4px 8px;
+    color: #666;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+    font-size: 11px;
+  }
+
+  .bottom-nav-item ion-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .bottom-nav-label {
+    font-size: 10px;
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bottom-nav-item.active {
+    color: hsl(353, 100%, 78%);
+  }
+
+  .bottom-nav-item:hover {
+    color: hsl(353, 100%, 78%);
+    text-decoration: none;
+  }
+
+  .bottom-nav-badge {
+    position: absolute;
+    top: 0;
+    right: 4px;
+    background: hsl(353, 100%, 78%);
+    color: #fff;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Add padding to body when mobile nav is visible */
+  body {
+    padding-bottom: 60px;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-bottom-nav {
+      display: none;
+    }
+    body {
+      padding-bottom: 0;
+    }
+  }
 </style>
 

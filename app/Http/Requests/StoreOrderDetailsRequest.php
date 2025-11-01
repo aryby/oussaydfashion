@@ -26,6 +26,7 @@ class StoreOrderDetailsRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:100',
             'last_name' => 'nullable|string|max:100',
+            'email' => 'nullable|email|max:255',
             'apartment' => 'nullable',
             'floor' => 'nullable|string|max:50',
             'street' => 'required|string|max:255',

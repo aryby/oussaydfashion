@@ -4,90 +4,69 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderDetailsRequest;
 use App\Services\OrderService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class CheckoutController extends Controller
 {
-    public function __construct(private OrderService $orderService)
-    {
+    public function __construct(
+        private OrderService $orderService,
+        private UserService $userService
+    ) {
     }
 
     public function get(Request $request)
     {
-        if ($request->query('payment_type') == 'paypal') {
-            return view('site.pages.paypal_checkout');
-        } else if ($request->query('payment_type') == 'card') {
-            return view('site.pages.paymob_checkout');
-        } else if ($request->query('payment_type') == 'cash') {
-            return view('site.pages.paycash_checkout');
-        } else {
-            return back()->with('payment_type_warning', 'payment type specified is not available at the moment.');
-        }
+        $paymentType = $request->query('payment_type');
+
+        return match ($paymentType) {
+            'paypal' => view('site.pages.paypal_checkout'),
+            'card' => view('site.pages.paymob_checkout'),
+            'cash' => view('site.pages.paycash_checkout'),
+            default => back()->with('payment_type_warning', 'Payment type specified is not available at the moment.'),
+        };
     }
 
     public function placePaymobOrder(StoreOrderDetailsRequest $request)
     {
-        $user = Auth::user();
-        if ($user && Str::startsWith($user->email, 'guest_')) {
-            $user->first_name = $request->input('first_name');
-            $user->last_name = $request->input('last_name');
-            $user->email = $request->input('email') ?? $user->email; // Assuming email might be provided in billing form
-            $user->password = bcrypt(Str::random(10));
-            $user->save();
-            Auth::login($user); // Re-login the user to refresh session data
+        $validated = $request->validated();
+        $this->userService->updateGuestUserWithOrderInfo($validated);
+
+        $order = $this->orderService->store($validated);
+
+        if (!$order) {
+            return back()->with('message', 'An error occurred during checkout.');
         }
 
-        $order = $this->orderService->store($request->validated());
-
-        if ($order) {
-            $paymentToken = PayMobPaymentController::handlePayment($order);
-            return view('site.pages.paymob_iframe', ['token' => $paymentToken]);
-        }
-
-        return back()->with('message', 'An error occured during checkout.');
+        $paymentToken = PayMobPaymentController::handlePayment($order);
+        return view('site.pages.paymob_iframe', ['token' => $paymentToken]);
     }
 
     public function placePayCashOrder(StoreOrderDetailsRequest $request)
     {
-        $user = Auth::user();
-        if ($user && Str::startsWith($user->email, 'guest_')) {
-            $user->first_name = $request->input('first_name');
-            $user->last_name = $request->input('last_name');
-            $user->email = $request->input('email') ?? $user->email;
-            $user->password = bcrypt(Str::random(10));
-            $user->save();
-            Auth::login($user); // Re-login the user to refresh session data
+        $validated = $request->validated();
+        $this->userService->updateGuestUserWithOrderInfo($validated);
+
+        $order = $this->orderService->store($validated);
+
+        if (!$order) {
+            return back()->with('message', 'An error occurred during checkout.');
         }
 
-        $order = $this->orderService->store($request->validated());
-
-        if ($order) {
-            return PayCashPaymentController::handlePayment($order);
-        }
-
-        return back()->with('message', 'An error occured during checkout.');
+        return PayCashPaymentController::handlePayment($order);
     }
 
     public function placePayPalOrder(StoreOrderDetailsRequest $request)
     {
-        $user = Auth::user();
-        if ($user && Str::startsWith($user->email, 'guest_')) {
-            $user->first_name = $request->input('first_name');
-            $user->last_name = $request->input('last_name');
-            $user->email = $request->input('email') ?? $user->email;
-            $user->password = bcrypt(Str::random(10));
-            $user->save();
-            Auth::login($user); // Re-login the user to refresh session data
+        $validated = $request->validated();
+        $this->userService->updateGuestUserWithOrderInfo($validated);
+
+        $order = $this->orderService->store($validated);
+
+        if (!$order) {
+            return back()->with('message', 'An error occurred during checkout.');
         }
 
-        $order = $this->orderService->store($request->validated());
-
-        if ($order) {
-            return PayPalPaymentController::handlePayment($order);
-        }
-
-        return back()->with('message', 'An error occured during checkout.');
+        return PayPalPaymentController::handlePayment($order);
     }
 }

@@ -37,5 +37,17 @@ class ComposerServiceProvider extends ServiceProvider
             }
             $view->with('cart_count', $cart_count);
         });
+
+        // Bottom bar navigation
+        View::composer('site.partials.bottom-bar', function ($view) {
+            $wishlist_count = 0;
+            $cart_count = 0;
+            if (Auth::check()) {
+                $wishlist_count = Wishlist::where('user_id', Auth::id())->count();
+                $cart_count = \Cart::session(Auth::id())->getContent()->count();
+            }
+            $view->with('wishlist_count', $wishlist_count)
+                 ->with('cart_count', $cart_count);
+        });
     }
 }

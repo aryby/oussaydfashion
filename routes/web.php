@@ -7,11 +7,14 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CheckoutSuccessController;
+use App\Http\Controllers\CheckoutResponseController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageSwitcherController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\WishlistController;
-use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +27,9 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-Route::get('/', function () {
-    return redirect(app()->getLocale());
-});
-
 Route::get('lang/{locale}', LanguageSwitcherController::class)->name('langswitcher');
 
-
-Route::view('/', 'site.pages.home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/orders/{order}/invoice', InvoiceController::class)
     ->name('order.invoice');
@@ -55,23 +53,24 @@ Route::get('/search', [ProductController::class, 'search'])
     ->name('products.search');
 
 
-Route::get('/products/prices-drop', function () { return view('site.pages.products.prices_drop'); })->name('products.prices_drop');
-Route::get('/products/new', function () { return view('site.pages.products.new'); })->name('products.new');
-Route::get('/products/best-sales', function () { return view('site.pages.products.bestsales'); })->name('products.bestsales');
-Route::get('/contact', function () { return view('site.pages.contact.index'); })->name('contact.index');
-Route::get('/sitemap', function () { return view('site.pages.sitemap.index'); })->name('sitemap.index');
+Route::get('/products/prices-drop', [ProductController::class, 'pricesDrop'])->name('products.prices_drop');
+Route::get('/products/new', [ProductController::class, 'new'])->name('products.new');
+Route::get('/products/best-sales', [ProductController::class, 'bestSales'])->name('products.bestsales');
 
-Route::get('/delivery-info', function () { return view('site.pages.company.delivery_info'); })->name('delivery.info');
-Route::get('/legal-notice', function () { return view('site.pages.company.legal_notice'); })->name('legal.notice');
-Route::get('/terms-conditions', function () { return view('site.pages.company.terms_conditions'); })->name('terms.conditions');
-Route::get('/about-us', function () { return view('site.pages.company.about_us'); })->name('about.us');
-Route::get('/secure-payment', function () { return view('site.pages.company.secure_payment'); })->name('secure.payment');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact.index');
+Route::get('/sitemap', [PageController::class, 'sitemap'])->name('sitemap.index');
 
-Route::get('/services/returns', function () { return view('site.pages.services.returns'); })->name('services.returns');
-Route::get('/services/faq', function () { return view('site.pages.services.faq'); })->name('services.faq');
-Route::get('/services/shipping', function () { return view('site.pages.services.shipping'); })->name('services.shipping');
-Route::get('/services/warranty', function () { return view('site.pages.services.warranty'); })->name('services.warranty');
-Route::get('/services/gift-cards', function () { return view('site.pages.services.gift_cards'); })->name('services.gift_cards');
+Route::get('/delivery-info', [PageController::class, 'deliveryInfo'])->name('delivery.info');
+Route::get('/legal-notice', [PageController::class, 'legalNotice'])->name('legal.notice');
+Route::get('/terms-conditions', [PageController::class, 'termsConditions'])->name('terms.conditions');
+Route::get('/about-us', [PageController::class, 'aboutUs'])->name('about.us');
+Route::get('/secure-payment', [PageController::class, 'securePayment'])->name('secure.payment');
+
+Route::get('/services/returns', [PageController::class, 'returns'])->name('services.returns');
+Route::get('/services/faq', [PageController::class, 'faq'])->name('services.faq');
+Route::get('/services/shipping', [PageController::class, 'shipping'])->name('services.shipping');
+Route::get('/services/warranty', [PageController::class, 'warranty'])->name('services.warranty');
+Route::get('/services/gift-cards', [PageController::class, 'giftCards'])->name('services.gift_cards');
 
 Route::get('/cart', [CartController::class, 'get'])
     ->name('cart.index');
@@ -126,21 +125,12 @@ Route::middleware('auth')->group(function () {
         Route::get('success-payment', [PayPalPaymentController::class, 'successPayment'])
             ->name('payment.success');
 
-        Route::get('/checkout/success/{order}', function (\App\Models\Order $order) {
-            \Cart::session(auth()->id())->clear();
-            $user = $order->customer; // Use the customer relationship to get the user
-            if ($user) {
-                \Illuminate\Support\Facades\Auth::login($user); // Ensure the user is logged in before redirecting
-            }
-            return to_route('account.orders')->with('success', 'Order #' . $order->order_number . ' has been placed successfully!');
-        })->name('checkout.success');
+        Route::get('/checkout/success/{order}', CheckoutSuccessController::class)
+            ->name('checkout.success');
     });
 });
 
-Route::get('checkout/response', function () {
-    \Cart::session(auth()->id())->clear();
-    return to_route('account.orders');
-});
+Route::get('checkout/response', CheckoutResponseController::class);
 
 
 require __DIR__ . '/auth.php';
