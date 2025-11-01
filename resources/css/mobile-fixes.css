@@ -1,0 +1,50 @@
+/* Styles pour les textarea et inputs sur mobile */
+
+textarea {
+    min-height: 100px !important;
+    resize: vertical !important;
+}
+
+
+/* Ajustements pour les formulaires sur mobile */
+
+@media screen and (max-width: 767px) {
+    textarea {
+        font-size: 16px !important;
+        /* Empêche le zoom automatique sur iOS */
+        line-height: 1.4 !important;
+        padding: 10px !important;
+    }
+    .fi-fo-field-wrp {
+        margin-bottom: 1.5rem !important;
+    }
+    /* Amélioration de l'espacement des étiquettes */
+    .fi-fo-field-wrp label {
+        margin-bottom: 0.5rem !important;
+        display: block !important;
+    }
+    /* Styles pour la sidebar mobile */
+    .sidebar {
+        padding: 15px !important;
+    }
+    .sidebar-category {
+        margin-bottom: 10px !important;
+    }
+    .menu-title-flex {
+        width: 100% !important;
+    }
+    .category-content-flex {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    .category-item-amount {
+        margin-left: 10px !important;
+        font-size: 12px !important;
+        color: #666 !important;
+    }
+    .sidebar-submenu-category .product-name {
+        font-size: 14px !important;
+    }
+}

@@ -48,6 +48,8 @@ rel="stylesheet" />
 
 <!-- custom javascript -->
 
+<!-- mobile fixes -->
+<link href="{{ secure_asset('css/mobile-fixes.css') }}" rel="stylesheet" media="only screen and (max-width: 768px)" />
 
 <style>
   /* Ensure overlay never blocks clicks unless explicitly active */
