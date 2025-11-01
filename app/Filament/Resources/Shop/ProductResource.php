@@ -168,20 +168,11 @@ class ProductResource extends Resource
                         Select::make('categories')
                             ->relationship('categories', 'name')
                             ->multiple()
-                            ->preload()
-                            ->searchable()
+                            ->options(Category::all()->pluck('name', 'id'))
                             ->required()
-                            ->createOptionForm([
-                                TextInput::make('name')
-                                    ->required()
-                                    ->unique(ignoreRecord: true),
-                                TextInput::make('name_ar'),
-                                Select::make('parent_id')
-                                    ->relationship('parent', 'name')
-                                    ->preload()
-                                    ->searchable()
-                            ])
-                            ->maxItems(3),
+                            ->native(false)
+                            ->maxItems(3)
+                            ->label(__('app.Categories')),
                         Section::make('Images')
                             ->schema([
                                 FileUpload::make('images')

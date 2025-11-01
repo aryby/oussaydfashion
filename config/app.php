@@ -173,6 +173,7 @@ return [
         App\Providers\ComposerServiceProvider::class,
         App\Providers\SettingServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
+        App\Providers\FilamentCustomServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Srmklive\PayPal\Providers\PayPalServiceProvider::class,
