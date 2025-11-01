@@ -31,9 +31,25 @@ class OrderResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
 
+    protected static ?string $modelLabel = 'Order';
+
+    protected static ?string $pluralModelLabel = 'Orders';
+
     protected static ?string $navigationIcon = 'heroicon-s-shopping-bag';
 
     protected static ?int $navigationSort = 1;
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Orders');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Shop');
+    }
+
+    protected static ?string $navigationLabel = 'Orders';
 
     public static function getGlobalSearchResultUrl($record): string
     {
