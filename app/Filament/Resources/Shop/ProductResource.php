@@ -88,21 +88,67 @@ class ProductResource extends Resource
                                 Tabs\Tab::make('English')
                                     ->schema([
                                         TextInput::make('name')
-                                            ->required(),
+                                            ->required()
+                                            ->label(__('app.name')),
                                         RichEditor::make('description')
+                                            ->label(__('app.description'))
+                                            ->toolbarButtons([
+                                                'bold',
+                                                'italic',
+                                                'underline',
+                                                'strike',
+                                                'bulletList',
+                                                'orderedList',
+                                                'h2',
+                                                'h3',
+                                            ])
                                             ->columnSpanFull(),
                                         RichEditor::make('details')
+                                            ->label(__('app.details'))
+                                            ->toolbarButtons([
+                                                'bold',
+                                                'italic',
+                                                'underline',
+                                                'strike',
+                                                'bulletList',
+                                                'orderedList',
+                                                'h2',
+                                                'h3',
+                                            ])
                                             ->columnSpanFull(),
                                     ]),
                                 Tabs\Tab::make('Arabic')
                                     ->schema([
                                                 TextInput::make('name_ar')
+                                                    ->label(__('app.name_ar'))
                                                     ->placeholder(fn ($get) => $get('name')),
                                                 RichEditor::make('description_ar')
+                                                    ->label(__('app.description_ar'))
                                                     ->placeholder(fn ($get) => $get('description'))
+                                                    ->toolbarButtons([
+                                                        'bold',
+                                                        'italic',
+                                                        'underline',
+                                                        'strike',
+                                                        'bulletList',
+                                                        'orderedList',
+                                                        'h2',
+                                                        'h3',
+                                                    ])
                                                     ->columnSpanFull(),
                                                 RichEditor::make('details_ar')
+                                                    ->label(__('app.details_ar'))
                                                     ->placeholder(fn ($get) => $get('details'))
+                                                    ->toolbarButtons([
+                                                        'bold',
+                                                        'italic',
+                                                        'underline',
+                                                        'strike',
+                                                        'bulletList',
+                                                        'orderedList',
+                                                        'h2',
+                                                        'h3',
+                                                    ])
                                                     ->columnSpanFull(),
                                     ]),
                             ])->columnSpanFull(),
