@@ -35,6 +35,16 @@ class CategoryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-s-tag';
 
     protected static ?int $navigationSort = 4;
+    
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Categories');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Shop');
+    }
 
     public static function getGloballySearchableAttributes(): array
     {

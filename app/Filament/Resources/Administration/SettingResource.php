@@ -24,6 +24,16 @@ class SettingResource extends Resource
 
     protected static ?string $navigationGroup = 'Administration';
 
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Settings');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Administration');
+    }
+
     public static function getGloballySearchableAttributes(): array
     {
         return ['key', 'value'];
@@ -40,9 +50,12 @@ class SettingResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('key'),
-                TextInput::make('value'),
+                TextInput::make('key')
+                    ->label(__('app.key')),
+                TextInput::make('value')
+                    ->label(__('app.value')),
                 FileUpload::make('attachment')
+                    ->label(__('app.attachment'))
                     ->directory('uploads')
                     ->visibility('public')
             ]);

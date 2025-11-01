@@ -29,6 +29,16 @@ class CustomerResource extends Resource
     protected static ?string $navigationGroup = 'Shop';
 
     protected static ?string $navigationIcon = 'heroicon-s-user-group';
+    
+    public static function getNavigationLabel(): string
+    {
+        return __('app.Customers');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('app.Shop');
+    }
 
     protected static ?int $navigationSort = 2;
 
