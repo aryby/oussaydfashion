@@ -3,7 +3,15 @@
 @section('content')
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8 col-lg-7">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">{{ __('Product Details') }}</div>
+                <div class="card-body">
+                    @include('site.partials.product_details', ['product' => $product])
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5">
             <div class="card">
                 <div class="card-header bg-primary text-white">{{ __('Order Now') }} - {{ $product->name }}</div>
                 <div class="card-body">
