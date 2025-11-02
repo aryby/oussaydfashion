@@ -90,33 +90,13 @@ class ProductResource extends Resource
                                         TextInput::make('name')
                                             ->required()
                                             ->label(__('app.name')),
-                                        RichEditor::make('description')
+                                        \Filament\Forms\Components\Textarea::make('description')
                                             ->label(__('app.description'))
-                                            ->toolbarButtons([
-                                                'bold',
-                                                'italic',
-                                                'underline',
-                                                'strike',
-                                                'bulletList',
-                                                'orderedList',
-                                                'h2',
-                                                'h3',
-                                            ])
-                                            ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
+                                            ->rows(5)
                                             ->columnSpanFull(),
-                                        RichEditor::make('details')
+                                        \Filament\Forms\Components\Textarea::make('details')
                                             ->label(__('app.details'))
-                                            ->toolbarButtons([
-                                                'bold',
-                                                'italic',
-                                                'underline',
-                                                'strike',
-                                                'bulletList',
-                                                'orderedList',
-                                                'h2',
-                                                'h3',
-                                            ])
-                                            ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
+                                            ->rows(5)
                                             ->columnSpanFull(),
                                     ]),
                                 Tabs\Tab::make('Arabic')
@@ -124,35 +104,15 @@ class ProductResource extends Resource
                                                 TextInput::make('name_ar')
                                                     ->label(__('app.name_ar'))
                                                     ->placeholder(fn ($get) => $get('name')),
-                                                RichEditor::make('description_ar')
+                                                \Filament\Forms\Components\Textarea::make('description_ar')
                                                     ->label(__('app.description_ar'))
                                                     ->placeholder(fn ($get) => $get('description'))
-                                                    ->toolbarButtons([
-                                                        'bold',
-                                                        'italic',
-                                                        'underline',
-                                                        'strike',
-                                                        'bulletList',
-                                                        'orderedList',
-                                                        'h2',
-                                                        'h3',
-                                                    ])
-                                                    ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
+                                                    ->rows(5)
                                                     ->columnSpanFull(),
-                                                RichEditor::make('details_ar')
+                                                \Filament\Forms\Components\Textarea::make('details_ar')
                                                     ->label(__('app.details_ar'))
                                                     ->placeholder(fn ($get) => $get('details'))
-                                                    ->toolbarButtons([
-                                                        'bold',
-                                                        'italic',
-                                                        'underline',
-                                                        'strike',
-                                                        'bulletList',
-                                                        'orderedList',
-                                                        'h2',
-                                                        'h3',
-                                                    ])
-                                                    ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
+                                                    ->rows(5)
                                                     ->columnSpanFull(),
                                     ]),
                             ])->columnSpanFull(),
