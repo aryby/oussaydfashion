@@ -48,11 +48,11 @@ class AdminPanelProvider extends PanelProvider
             ->userMenuItems([
                 'locale-en' => MenuItem::make()
                     ->label('English')
-                    ->url(fn (): string => route('langswitcher', ['locale' => 'en']))
+                    ->url(fn (): string => route('set_language', ['locale' => 'en']))
                     ->icon('heroicon-s-language'),
                 'locale-ar' => MenuItem::make()
                     ->label('العربية')
-                    ->url(fn (): string => route('langswitcher', ['locale' => 'ar']))
+                    ->url(fn (): string => route('set_language', ['locale' => 'ar']))
                     ->icon('heroicon-s-language'),
             ])
             ->middleware([

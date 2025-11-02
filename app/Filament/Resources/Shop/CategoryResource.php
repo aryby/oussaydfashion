@@ -38,12 +38,12 @@ class CategoryResource extends Resource
     
     public static function getNavigationLabel(): string
     {
-        return __('app.Categories');
+        return __('filament.resources.CategoryResource.navigation_label');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('app.Shop');
+        return __('filament.resources.CategoryResource.navigation_group');
     }
 
     public static function getGloballySearchableAttributes(): array
@@ -72,25 +72,33 @@ class CategoryResource extends Resource
                         Tabs\Tab::make('English')
                             ->schema([
                                 TextInput::make('name')
+                                    ->label(__('filament.resources.CategoryResource.fields.name'))
                                     ->unique(ignoreRecord: true),
-                                MarkdownEditor::make('description'),
+                                MarkdownEditor::make('description')
+                                    ->label(__('filament.resources.CategoryResource.fields.description')),
                             ]),
                         Tabs\Tab::make('Arabic')
                             ->schema([
                                 TextInput::make('name_ar')
+                                    ->label(__('filament.resources.CategoryResource.fields.name_ar'))
                                     ->unique(ignoreRecord: true),
-                                MarkdownEditor::make('description_ar'),
+                                MarkdownEditor::make('description_ar')
+                                    ->label(__('filament.resources.CategoryResource.fields.description_ar')),
                             ]),
                     ])->columnSpanFull(),
 
                 Select::make('parent_id')
-                    ->label('parent')
+                    ->label(__('filament.resources.CategoryResource.fields.parent_id'))
                     ->options(Category::orderByRaw('-name ASC')->get()->nest()->listsFlattened('name')),
                 FileUpload::make('image')
+                    ->label(__('filament.resources.CategoryResource.fields.image'))
                     ->directory('uploads')
                     ->visibility('public'),
-                Toggle::make('menu')->default(true),
+                Toggle::make('menu')
+                    ->label(__('filament.resources.CategoryResource.fields.menu'))
+                    ->default(true),
                 Toggle::make('featured')
+                    ->label(__('filament.resources.CategoryResource.fields.featured'))
             ]);
     }
 
@@ -99,17 +107,23 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('filament.resources.CategoryResource.columns.name'))
                     ->searchable()
                     ->description(fn (Category $record): string => $record->description ? Str::limit($record->description, 20, '...') : ''),
                 ImageColumn::make('image')
+                    ->label(__('filament.resources.CategoryResource.columns.image'))
                     ->toggleable()
                     ->extraImgAttributes(['title' => 'image/attachment']),
                 TextColumn::make('slug')
+                    ->label(__('filament.resources.CategoryResource.columns.slug'))
                     ->searchable(),
                 TextColumn::make('parent.name')
+                    ->label(__('filament.resources.CategoryResource.columns.parent_name'))
                     ->toggleable(),
-                ToggleColumn::make('menu'),
-                ToggleColumn::make('featured'),
+                ToggleColumn::make('menu')
+                    ->label(__('filament.resources.CategoryResource.columns.menu')),
+                ToggleColumn::make('featured')
+                    ->label(__('filament.resources.CategoryResource.columns.featured'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make()->iconButton(),

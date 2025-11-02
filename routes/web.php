@@ -16,6 +16,7 @@ use App\Http\Controllers\LanguageSwitcherController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\BuyNowController;
+use App\Http\Controllers\LocalizationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ use App\Http\Controllers\BuyNowController;
 |
 */
 
-Route::get('lang/{locale}', LanguageSwitcherController::class)->name('langswitcher');
+Route::get('lang/{locale}', [LocalizationController::class, 'setLang'])->name('set_language');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
