@@ -15,6 +15,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LanguageSwitcherController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\BuyNowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,11 @@ Route::get('/cart', [CartController::class, 'get'])
 
 Route::post('/cart/add', [CartController::class, 'addItem'])
     ->name('cart.addItem');
+
+
+// Achat immédiat (Buy Now) - formulaire de commande rapide (COD)
+Route::get('/products/{product:slug}/order-now', [\App\Http\Controllers\BuyNowController::class, 'orderNowForm'])->name('products.order-now');
+Route::post('/products/{product:slug}/order-now', [\App\Http\Controllers\BuyNowController::class, 'orderNowSubmit'])->name('products.order-now.submit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'edit'])->name('account.edit');

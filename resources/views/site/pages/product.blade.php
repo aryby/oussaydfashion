@@ -167,8 +167,8 @@
                                             </var>
                                         @endif
                                     </div>
-                                    <form action="{{ route('cart.addItem') }}" method="POST" role="form" id="addToCart"
-                                        name="addToCartForm">
+                                    <form action="{{ isset($buy_now) ? route('buy-now.checkout', $product) : route('cart.addItem') }}" 
+                                        method="POST" role="form" id="addToCart" name="addToCartForm">
                                         @csrf
                                         <div class="row">
                                             <div class="col-sm-12">
@@ -220,9 +220,14 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <button type="submit" class="btn btn-outline-primary"><i
-                                                class="fas fa-shopping-cart"></i>
-                                            {{ __('Add To Cart') }}</button>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-outline-primary"><i
+                                                    class="fas fa-shopping-cart"></i>
+                                                {{ __('Add To Cart') }}</button>
+                                            <a href="{{ route('products.order-now', $product->slug) }}" class="btn btn-primary">
+                                                <i class="fas fa-bolt"></i> {{ __('Buy Now') }}
+                                            </a>
+                                        </div>
                                     </form>
                                 </article>
                             </aside>
