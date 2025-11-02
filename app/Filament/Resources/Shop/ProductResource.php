@@ -102,6 +102,7 @@ class ProductResource extends Resource
                                                 'h2',
                                                 'h3',
                                             ])
+                                            ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
                                             ->columnSpanFull(),
                                         RichEditor::make('details')
                                             ->label(__('app.details'))
@@ -115,6 +116,7 @@ class ProductResource extends Resource
                                                 'h2',
                                                 'h3',
                                             ])
+                                            ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
                                             ->columnSpanFull(),
                                     ]),
                                 Tabs\Tab::make('Arabic')
@@ -135,6 +137,7 @@ class ProductResource extends Resource
                                                         'h2',
                                                         'h3',
                                                     ])
+                                                    ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
                                                     ->columnSpanFull(),
                                                 RichEditor::make('details_ar')
                                                     ->label(__('app.details_ar'))
@@ -149,6 +152,7 @@ class ProductResource extends Resource
                                                         'h2',
                                                         'h3',
                                                     ])
+                                                    ->extraAttributes(['class' => 'filament-rich-editor--fullscreen'])
                                                     ->columnSpanFull(),
                                     ]),
                             ])->columnSpanFull(),
@@ -166,7 +170,9 @@ class ProductResource extends Resource
                                     ->visibility('public'),
                             ]),
                         Select::make('categories')
-                            ->relationship('categories', 'name')
+                            ->label(__('app.Categories'))
+                            ->options(Category::all()->pluck(app()->getLocale() == 'ar' ? 'name_ar' : 'name', 'id'))
+                            ->searchable()
                             ->multiple()
                             ->required()
                             ->maxItems(3),
