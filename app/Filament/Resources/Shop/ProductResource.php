@@ -172,10 +172,7 @@ class ProductResource extends Resource
                         Select::make('categories')
                             ->label(__('app.Categories'))
                             ->relationship('categories', app()->getLocale() == 'ar' ? 'name_ar' : 'name')
-                            ->options(Category::all()->pluck(app()->getLocale() == 'ar' ? 'name_ar' : 'name', 'id'))
-                            ->searchable()
-                            ->native()
-                            ->multiple()
+                    ->options(Category::orderByRaw('-name ASC')->get()->nest()->listsFlattened('name'))
                             ->required(),
                         Section::make('Images')
                             ->schema([
