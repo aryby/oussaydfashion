@@ -11,11 +11,15 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Notifications\NewOrderNotification;
 use Illuminate\Support\Facades\Notification;
+use App\Models\ProductAttribute;
 
 class BuyNowController extends Controller
 {
     public function orderNowForm(Product $product)
     {
+        $product->load(['attributes' => function ($query) {
+            $query->orderBy('price', 'asc');
+        }]);
         return view('site.pages.order_now', compact('product'));
     }
 
@@ -26,6 +30,8 @@ class BuyNowController extends Controller
             'email' => 'nullable|email|max:255',
             'phone' => 'required|string|max:30',
             'address' => 'required|string|max:255',
+            'attributes' => 'nullable|array',
+            'attributes.*' => 'exists:product_attributes,id',
         ]);
 
         // Split name into first and last name (simple)
@@ -64,12 +70,29 @@ class BuyNowController extends Controller
             }
         }
 
+        $basePrice = $product->sale_price > 0 ? $product->sale_price : $product->unit_price;
+        $totalPrice = $basePrice;
+        $selectedAttributes = [];
+
+        if (!empty($validated['attributes'])) {
+            $selectedProductAttributes = ProductAttribute::whereIn('id', $validated['attributes'])->get();
+            foreach ($selectedProductAttributes as $attr) {
+                $totalPrice += $attr->price;
+                $selectedAttributes[] = [
+                    'attribute_id' => $attr->attribute->id,
+                    'attribute_name' => $attr->attribute->name,
+                    'value' => $attr->value,
+                    'price' => $attr->price,
+                ];
+            }
+        }
+
         $order = \App\Models\Order::create([
             'number' => $orderNumber,
             'user_id' => $user->id,
             'status' => \App\Enums\OrderStatus::PENDING,
             'payment_status' => \App\Enums\PaymentStatus::PENDING,
-            'grand_total' => $product->sale_price > 0 ? $product->sale_price : $product->unit_price,
+            'grand_total' => $totalPrice,
             'payment_method' => 'cash',
             'currency' => config('settings.currency_symbol.value', 'MAD'),
             'first_name' => $firstName,
@@ -84,14 +107,16 @@ class BuyNowController extends Controller
             'state' => '',
             'postal_code' => '',
             'notes' => '',
+            'attributes' => $selectedAttributes, // Store selected attributes
         ]);
 
         $order->items()->create([
             'product_id' => $product->id,
             'name' => $product->name,
             'description' => $product->description,
+            'attributes' => $selectedAttributes, // Store selected attributes
             'qty' => 1,
-            'price' => $product->sale_price > 0 ? $product->sale_price : $product->unit_price,
+            'price' => $basePrice,
         ]);
 
         // Notifier l'admin par email

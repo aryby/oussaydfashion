@@ -90,7 +90,10 @@ class OrderResource extends Resource
                     ->schema([
                         TextEntry::make('number'),
                         TextEntry::make('status')->badge(),
-                    ])->columns(2)->collapsible(),
+                        TextEntry::make('created_at')
+                            ->dateTime()
+                            ->label(__('Order Placed')),
+                    ])->columns(3)->collapsible(),
                 Section::make('Payment information')
                     ->schema([
                         TextEntry::make('payment_status')->badge(),
@@ -103,9 +106,12 @@ class OrderResource extends Resource
                     ->schema([
                         TextEntry::make('first_name'),
                         TextEntry::make('last_name'),
+                        TextEntry::make('customer.full_name')
+                            ->label(__('Customer Name')), // Add customer full name
                         TextEntry::make('customer.email'),
                         TextEntry::make('phone_number')->badge()->color('info'),
-                        TextEntry::make('notes'),
+                        TextEntry::make('notes')
+                            ->columnSpanFull(), // Make notes span full width
                         Section::make('Address information')
                             ->schema([
                                 TextEntry::make('apartment'),
@@ -123,7 +129,23 @@ class OrderResource extends Resource
                         RepeatableEntry::make('items')
                             ->schema([
                                 TextEntry::make('name'),
-                                TextEntry::make('attributes')->listWithLineBreaks(),
+                                TextEntry::make('attributes')
+                                    ->formatStateUsing(function ($state) {
+                                        if (is_array($state)) {
+                                            $formattedAttributes = [];
+                                            foreach ($state as $attr) {
+                                                if (is_array($attr) && isset($attr['attribute_name']) && isset($attr['value'])) {
+                                                    $formattedAttributes[] = $attr['attribute_name'] . ': ' . $attr['value'];
+                                                } else {
+                                                    // Handle cases where $attr is not an array or missing keys
+                                                    $formattedAttributes[] = (string) $attr; // Convert to string or skip
+                                                }
+                                            }
+                                            return implode(', ', $formattedAttributes);
+                                        }
+                                        return $state;
+                                    })
+                                    ->listWithLineBreaks(),
                                 TextEntry::make('price')->money(fn (OrderItem $record) => $record->order->currency),
                                 TextEntry::make('qty'),
                             ])
@@ -137,20 +159,36 @@ class OrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('number')
-                    ->toggleable(),
+                    ->searchable()
+                    ->toggleable()
+                    ->sortable(),
+                TextColumn::make('customer.full_name')
+                    ->label(__('Customer'))
+                    ->searchable()
+                    ->toggleable()
+                    ->sortable(),
+                TextColumn::make('created_at')
+                    ->label(__('Order Date'))
+                    ->dateTime()
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('status')
                     ->badge()
-                    ->toggleable(),
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('payment_status')
                     ->badge()
-                    ->toggleable(),
-                TextColumn::make('payment_method')
-                    ->toggleable(),
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('grand_total')
                     ->money(fn (Order $record) => $record->currency)
-                    ->toggleable(),
+                    ->toggleable()
+                    ->sortable(),
+                TextColumn::make('payment_method')
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('currency')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->actions([
                 Action::make('Download Invoice')

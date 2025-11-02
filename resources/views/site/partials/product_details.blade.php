@@ -1,7 +1,7 @@
 <div class="product-details-summary mb-3">
     <div class="d-flex align-items-center mb-2">
         @if($product->images && count($product->images))
-            <img src="{{ asset('uploads/' . $product->images[0]) }}" alt="{{ $product->name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; margin-right: 15px;">
+            <!-- Image moved to order_now.blade.php -->
         @endif
         <div>
             <h5 class="mb-1">{{ $product->name }}</h5>
