@@ -168,11 +168,8 @@ class ProductResource extends Resource
                         Select::make('categories')
                             ->relationship('categories', 'name')
                             ->multiple()
-                            ->options(Category::all()->pluck('name', 'id'))
                             ->required()
-                            ->native(false)
-                            ->maxItems(3)
-                            ->label(__('app.Categories')),
+                            ->maxItems(3),
                         Section::make('Images')
                             ->schema([
                                 FileUpload::make('images')
