@@ -8,6 +8,7 @@
     <meta title="{{ config('settings.seo_meta_title.value') }}" content="{{ config('settings.seo_meta_content.value') }}">
     <title>{{ config('settings.site_title.value') ?? 'No title set' }} - @yield('title')</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     @livewireStyles()
     @yield('styles')
     @include('site.partials.styles')

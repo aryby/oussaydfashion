@@ -36,6 +36,17 @@
     "Warranty": "Warranty",
     "FAQ": "FAQ",
     "Gift Cards": "Gift Cards",
-    "Contact Us": "Contact Us"
+    "Contact Us": "Contact Us",
+    "Admins": "Admins",
+    "Administration": "Administration",
+    "Settings": "Settings",
+    "Attributes": "Attributes",
+    "Brands": "Brands",
+    "Customers": "Customers",
+    "Offers": "Offers",
+    "filament.resources.CategoryResource.navigation_label": "Categories",
+    "filament.resources.CategoryResource.navigation_group": "Shop",
+    "filament.resources.ProductResource.navigation_group": "Shop",
+    "filament.resources.ProductResource.navigation_label": "Products"
 }
 

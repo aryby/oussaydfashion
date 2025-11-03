@@ -39,7 +39,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     @foreach (config('languages') as $locale => $lang)
                         <a class="dropdown-item"
-                            href="{{ route('langswitcher', ['locale' => $locale]) }}">{{ $lang }}</a>
+                            href="{{ route('set_language', ['locale' => $locale]) }}">{{ $lang }}</a>
                     @endforeach
                 </div>
             </div>

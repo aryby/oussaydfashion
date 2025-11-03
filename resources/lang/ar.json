@@ -157,5 +157,16 @@
     "Returns & Refunds" : "المرتجعات والاسترداد",
     "Warranty" : "الضمان",
     "FAQ" : "الأسئلة الشائعة",
-    "Gift Cards" : "بطاقات الهدايا"
+    "Gift Cards" : "بطاقات الهدايا",
+    "Admins": "المسؤولون",
+    "Administration": "الإدارة",
+    "Settings": "الإعدادات",
+    "Attributes": "السمات",
+    "Brands": "العلامات التجارية",
+    "Customers": "العملاء",
+    "Offers": "العروض",
+    "filament.resources.CategoryResource.navigation_label": "الفئات",
+    "filament.resources.CategoryResource.navigation_group": "المتجر",
+    "filament.resources.ProductResource.navigation_group": "المتجر",
+    "filament.resources.ProductResource.navigation_label": "المنتجات"
 }
