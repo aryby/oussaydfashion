@@ -105,8 +105,8 @@
                             @else
                                 <div class="aside">
                                     <div class="img-wrap img-sm border-right"><a
-                                            href="https://via.placeholder.com/176"><img
-                                                src="https://via.placeholder.com/176"></a>
+                                            href="{{ ('assets\images\icons\rating-5.png') }}"><img
+                                                src="{{ ('assets\images\icons\rating-5.png') }}"></a>
                                     </div>
                                 </div>
                             @endif

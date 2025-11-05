@@ -104,8 +104,8 @@
                                         </div>
                                     @else
                                         <div class="img-big-wrap">
-                                            <a href="https://via.placeholder.com/176" data-fancybox=""><img
-                                                    src="https://via.placeholder.com/176"></a>
+                                            <a href="{{ ('assets\images\icons\rating-5.png') }}" data-fancybox=""><img
+                                                    src="{{ ('assets\images\icons\rating-5.png') }}"></a>
                                         </div>
                                     @endif
                                     @if (count($product->images) > 1)

@@ -15,7 +15,7 @@
                                 </div>
                             @else
                                 <div class="img-wrap">
-                                    <a href="https://via.placeholder.com/176"><img src="https://via.placeholder.com/176"></a>
+                                    <a href="{{ ('assets\images\icons\rating-5.png') }}"><img src="{{ ('assets\images\icons\rating-5.png') }}"></a>
                                 </div>
                             @endif
                             <figcaption class="info-wrap">
