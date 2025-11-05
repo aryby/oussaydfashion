@@ -1,65 +1,39 @@
-
-    <!--
-      - CATEGORY
-    -->
-
-
+{{-- this section is for the featured categories, must have header title and slider for the categories --}}
 
 {{-- here --}}
-<section class="section-content padding-y-sm bg">
+<section class="section-content section-compact-py bg">
     <div class="container">
-        <header class="section-heading heading-line">
-            <h4 class="title-section bg">{{ __('Featured Categories') }}</h4>
-        </header>
-            <div class="category">
+        <div class="product-featured">
 
-      <div class="container">
+            <h2 class="title" style="margin-bottom: 20px;">{{ __('Featured Categories') }}</h2>
 
-        <div class="category-item-container has-scrollbar">
-
-            @forelse ($featured_categories as $category)
-              <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="{{ asset('uploads/' . $category->image) }}" alt="{{ $category->name }}" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">{{ $category->name }}</h3>
-
-                <p class="category-item-amount">(53)</p>
-              </div>
-
-              <a href="{{ route('categories.show', $category->slug) }}" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-                {{-- <div class="col-md-4">
-                    <div class="card-banner"
-                        style="height:250px; background-image: url({{ asset('uploads/' . $category->image) }});">
-                        <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
-                            <div class="text-center">
-                                <h5 class="card-title">{{ $category->name }}</h5>
-                                <a href="{{ route('categories.show', $category->slug) }}"
-                                    class="btn btn-warning btn-sm"> {{ __('View Products') }}
-                                </a>
+            <div class="category-list-container category-carousel-flex-container">
+                @foreach ($featured_categories as $category)
+                    <div class="showcase-container category-item-width">
+                        <div class="showcase">
+                            <div class="showcase-banner">
+                                <div class="img-wrap">
+                                    <a href="{{ route('categories.show', $category->slug) }}">
+                                        <img src="{{ asset($category->image) }}" class="showcase-img">
+                                    </a>
+                                </div>
                             </div>
-                        </article>
+                            <div class="showcase-content">
+                                <a href="{{ route('categories.show', $category->slug) }}">
+                                    <h4 class="showcase-title" style="font-size: 0.9rem;">{{ Str::limit($category->name, 10) }}</h4>
+                                </a>
+                                <p class="showcase-desc" style="font-size: 0.8rem;">
+                                    {{ $category->products_count }} Products
+                                </p>
+                                <div class="price-box" style="font-size: 0.9rem;">
+                                    <a href="{{ route('categories.show', $category->slug) }}" class="btn btn-primary btn-sm">Show All</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div> --}}
-            @empty
-            @endforelse
-        
-
+                @endforeach
+            </div>
 
         </div>
-
-      </div>
-
-    </div>
     </div>
 </section>

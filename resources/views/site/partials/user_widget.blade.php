@@ -21,7 +21,7 @@
     <div class="dropdown-menu dropdown-menu-right">
         @auth
             @php
-                $myAccountRoute = (Str::startsWith(auth()->user()->email, 'guest_')) ? route('login') : route('account.edit');
+                $myAccountRoute = route('account.edit');
             @endphp
             <a class="dropdown-item" href="{{ $myAccountRoute }}">{{ __('My Account') }}</a>
             

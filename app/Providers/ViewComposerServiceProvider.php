@@ -47,7 +47,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 ->with('featured_products', Product::featured()->with(['ratings', 'offer'])->limit(3)->get());
         });
         View::composer('site.partials.featured_categories', function ($view) {
-            $view->with('featured_categories', Category::featured()->limit(3)->get());
+            $view->with('featured_categories', Category::featured()->limit(3)->withCount('products')->get());
         });
         View::composer('site.partials.featured_products', function ($view) {
             $view->with('featured_products', Product::featured()->with(['ratings', 'offer'])->get());

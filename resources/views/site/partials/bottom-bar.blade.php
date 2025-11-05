@@ -14,7 +14,10 @@
       <span class="bottom-nav-badge">{{ $cart_count }}</span>
     @endif
   </a>
-  <a href="{{ route('account.edit') }}" class="bottom-nav-item {{ request()->routeIs('account.*') ? 'active' : '' }}">
+  @php
+    $myAccountRoute = route('account.edit');
+  @endphp
+  <a href="{{ $myAccountRoute }}" class="bottom-nav-item {{ request()->routeIs('account.*') ? 'active' : '' }}">
     <ion-icon name="person-outline"></ion-icon>
     <span class="bottom-nav-label">{{ __('Profile') }}</span>
   </a>

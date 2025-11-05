@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -35,9 +37,15 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        if ($request->has('password') && !empty($request->password)) {
+            $request->user()->forceFill([
+                'password' => Hash::make($request->password),
+            ])->save();
+        }
+
         $user_info = $request->user()->info ?: new UserInfo;
         $user_info->city = $request->city;
-        $user_info->country = $request->country;
+        $user_info->country = $request->country ?? 'Morocco';
         $user_info->state = $request->state;
         $user_info->phone_number = $request->phone_number;
         $request->user()->info()->save($user_info);

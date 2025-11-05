@@ -50,6 +50,14 @@ class Category extends Model
         $this->attributes['slug'] = Str::slug($value);
     }
 
+    public function getNameAttribute($value)
+    {
+        if (app()->getLocale() == 'ar' && $this->name_ar) {
+            return $this->name_ar;
+        }
+        return $value;
+    }
+
     public function setDescriptionArAttribute($value)
     {
         $this->attributes['description_ar'] = $value;
