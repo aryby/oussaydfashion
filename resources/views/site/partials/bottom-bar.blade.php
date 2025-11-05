@@ -25,6 +25,17 @@
     <ion-icon name="bag-outline"></ion-icon>
     <span class="bottom-nav-label">{{ __('Orders') }}</span>
   </a>
+  <div class="bottom-nav-item dropup">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0px; margin: 0px; color: inherit;">
+      <ion-icon name="language-outline"></ion-icon>
+      <span class="bottom-nav-label">{{ config('languages.' . app()->getLocale()) ?? config('languages.' . config('app.fallback_locale')) }}</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      @foreach (config('languages') as $locale => $lang)
+        <a class="dropdown-item" href="{{ route('set_language', ['locale' => $locale]) }}">{{ $lang }}</a>
+      @endforeach
+    </div>
+  </div>
 </nav>
 @else
 <nav class="mobile-bottom-nav d-md-none">
@@ -43,9 +54,16 @@
     <ion-icon name="home-outline"></ion-icon>
     <span class="bottom-nav-label">{{ __('Home') }}</span>
   </a>
-  <a href="{{ route('register') }}" class="bottom-nav-item">
-    <ion-icon name="add-circle-outline"></ion-icon>
-    <span class="bottom-nav-label">{{ __('Register') }}</span>
-  </a>
+  <div class="bottom-nav-item dropup">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0px; margin: 0px; color: inherit;">
+      <ion-icon name="language-outline"></ion-icon>
+      <span class="bottom-nav-label">{{ config('languages.' . app()->getLocale()) ?? config('languages.' . config('app.fallback_locale')) }}</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      @foreach (config('languages') as $locale => $lang)
+        <a class="dropdown-item" href="{{ route('set_language', ['locale' => $locale]) }}">{{ $lang }}</a>
+      @endforeach
+    </div>
+  </div>
 </nav>
 @endauth
