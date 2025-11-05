@@ -9,6 +9,7 @@
     <title>{{ config('settings.site_title.value') ?? 'No title set' }} - @yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('css/normalize.min.css') }}">
+    @vite('resources/css/site-mobile-fixes.css')
     @livewireStyles()
     @yield('styles')
     @include('site.partials.styles')
