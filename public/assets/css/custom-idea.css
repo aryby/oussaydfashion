@@ -1,0 +1,68 @@
+.related-product .card-img-top {
+    height: 180px; /* Fixed height for related product images */
+    object-fit: cover;
+}
+
+.mini-preview img {
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.mini-preview img:hover {
+    transform: scale(1.05);
+}
+
+.product-image-display img {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.related-product.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+/* Custom styles for typography and colors from idea file */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+}
+
+.theme-text {
+    color: #256eff; /* Example primary color from idea file */
+}
+
+.original-price {
+    color: #f64749;
+    text-decoration: line-through;
+}
+
+.subtitle {
+    font-weight: 700;
+}
+
+.product-price .theme-text {
+    font-weight: bold;
+}
+
+.ratings .stars i {
+    font-size: 1rem;
+}
+
+/* Adjustments for tab navigation from idea file */
+.nav-tabs .nav-link {
+    color: #495057;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    margin-bottom: -1px;
+    background-color: #f8f9fa;
+    border-color: #dee2e6 #dee2e6 #f8f9fa;
+}
+
+.nav-tabs .nav-link.active {
+    color: #256eff;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}

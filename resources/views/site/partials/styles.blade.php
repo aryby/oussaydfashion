@@ -37,6 +37,7 @@ rel="stylesheet" />
     - custom css link
   -->
   <link rel="stylesheet" href="{{ secure_asset('inspire/assets/css/style-prefix.css')}}">
+  <link rel="stylesheet" href="{{ secure_asset('assets/css/custom-idea.css')}}">
 
   <!--
     - google font link

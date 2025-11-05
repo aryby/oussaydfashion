@@ -4,7 +4,6 @@
             <!-- Image moved to order_now.blade.php -->
         @endif
         <div>
-            <h5 class="mb-1">{{ $product->name }}</h5>
             <div class="text-muted small mb-1">{{ $product->brand->name ?? '' }}</div>
             <div class="mb-1">
                 <span class="font-weight-bold text-primary">
