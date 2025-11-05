@@ -36,7 +36,7 @@
                             $stars_width = 0;
                         }
                     @endphp
-                    <ul class="rating-stars">
+                    <ul class="rating-stars" style="margin: 0;">
                         <li style="width:{{ $stars_width }}%" class="stars-active">
                             <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
                                 class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -51,16 +51,16 @@
             </div>
 
             <a href="{{ route('products.show', $product->slug) }}">
-                <h3 class="showcase-title">{{ $product->name }}</h3>
+                <h4 class="showcase-title" style="font-size: 0.9rem;">{{ Str::limit($product->name, 10) }}</h4>
             </a>
 
-            <p class="showcase-desc">
-                <dd class="col-sm-9">
-                    {!! app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description !!}
+            <p class="showcase-desc" style="font-size: 0.8rem;">
+                <dd class="col-sm-12" style="margin-left: 0;">
+                    {!! Str::limit(app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description, 20) !!}
                 </dd>
             </p>
 
-            <div class="price-box">
+            <div class="price-box" style="font-size: 0.9rem;">
                 @if ($product->sale_price > 0)
                     <span class="price-new">{{ number_format($product->sale_price) }}
                         <small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small></span>

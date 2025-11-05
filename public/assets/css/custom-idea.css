@@ -66,3 +66,8 @@ body {
     background-color: #fff;
     border-color: #dee2e6 #dee2e6 #fff;
 }
+
+.section-compact-py {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

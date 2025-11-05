@@ -52,12 +52,12 @@
 
     <div class="showcase-content">
 
-        <a href="#" class="showcase-category">{{ $product->name }}</a>
+        <a href="#" class="showcase-category">{{ Str::limit($product->name, 10) }}</a>
 
-        <a href="#">
-            <h3 class="showcase-title">
-                {!! app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description !!}
-            </h3>
+        <a href="{{ route('products.show', $product->slug) }}">
+            <h4 class="showcase-title" style="font-size: 0.9rem; margin-top: 5px;">
+                {{ Str::limit(app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description, 20) }}
+            </h4>
         </a>
 
         <div class="showcase-rating">
@@ -72,7 +72,7 @@
                         $stars_width = 0;
                     }
                 @endphp
-                <ul class="rating-stars">
+                <ul class="rating-stars" style="margin: 0;">
                     <li style="width:{{ $stars_width }}%" class="stars-active">
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
                             class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -86,7 +86,7 @@
             </div> &nbsp;
         </div>
 
-        <div class="price-box">
+        <div class="price-box" style="font-size: 0.9rem;">
             @if ($product->sale_price > 0)
                 <span
                     class="price-new">{{ number_format($product->sale_price) }}<small><sup>{{ env('CURRENCY_SYMBOLE') }}</sup></small>

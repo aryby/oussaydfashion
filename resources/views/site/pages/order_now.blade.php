@@ -139,15 +139,32 @@
                 {!! app()->getLocale() == 'ar' && $product->details_ar ? $product->details_ar : $product->details !!}
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                <h4 class="mb-3">{{ __('Customer Reviews') }} - Test Content</h4>
-                <p>This is a test to see if the reviews tab content changes.</p>
-                {{-- @livewire('product-ratings', ['product' => $product]) --}}
-                {{-- @livewire('rate-form', ['product' => $product]) --}}
+                <h4 class="mb-3">{{ __('Customer Reviews') }}</h4>
+                @livewire('product-ratings', ['product' => $product])
+                @livewire('rate-form', ['product' => $product])
+                {{-- Here you would loop through actual reviews if available --}}
             </div>
             <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
                 <h4 class="mb-3">{{ __('Product Specifications') }}</h4>
-                <p class="text-muted">No specifications available for this product.</p>
-                {{-- Product specifications will go here --}}
+                @if ($product->attributes->isNotEmpty())
+                    <ul class="list-group list-group-flush">
+                        @php
+                            $groupedAttributes = $product->attributes->groupBy('attribute.name');
+                        @endphp
+                        @foreach ($groupedAttributes as $attributeName => $attributes)
+                            <li class="list-group-item d-flex justify-content-between align-items-center ps-0 pe-0">
+                                <span class="fw-bold">{{ $attributeName }}:</span>
+                                <span>
+                                    @foreach ($attributes as $attribute)
+                                        {{ $attribute->value }}{{ !$loop->last ? ', ' : '' }}
+                                    @endforeach
+                                </span>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p class="text-muted">{{ __('No specifications available for this product.') }}</p>
+                @endif
             </div>
         </div>
     </div>
