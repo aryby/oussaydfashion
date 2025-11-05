@@ -87,6 +87,7 @@ Route::post('/products/{product:slug}/order-now', [\App\Http\Controllers\BuyNowC
 
 Route::middleware('auth')->group(function () {
     Route::get('/account', [ProfileController::class, 'edit'])->name('account.edit');
+    Route::get('/account/profile', [ProfileController::class, 'showProfile'])->name('account.profile');
     Route::patch('/account', [ProfileController::class, 'update'])->name('account.update');
     Route::delete('/account', [ProfileController::class, 'destroy'])->name('account.destroy');
 
