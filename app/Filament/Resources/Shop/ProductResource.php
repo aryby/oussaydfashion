@@ -141,9 +141,11 @@ class ProductResource extends Resource
                                 FileUpload::make('images')
                                     ->label(__('filament.resources.ProductResource.fields.images'))
                                     ->multiple()
+                                    ->image()
                                     ->directory('uploads')
                                     ->visibility('public')
-                                    ->maxFiles(5),
+                                    ->maxFiles(5)
+                                    ->reorderable(),
                             ])
                             ->collapsible(),
                     ])

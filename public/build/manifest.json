@@ -1,13 +1,8 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-77a47cd6.css",
+    "file": "assets/app-0d9ad997.css",
     "isEntry": true,
     "src": "resources/css/app.css"
-  },
-  "resources/css/mobile-fixes.css": {
-    "file": "assets/mobile-fixes-0faf7612.css",
-    "isEntry": true,
-    "src": "resources/css/mobile-fixes.css"
   },
   "resources/js/app.js": {
     "file": "assets/app-4a08c204.js",
