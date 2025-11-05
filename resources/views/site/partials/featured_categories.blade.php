@@ -14,7 +14,7 @@
                             <div class="showcase-banner">
                                 <div class="img-wrap">
                                     <a href="{{ route('categories.show', $category->slug) }}">
-                                        <img src="{{ asset("".$category->image) }}" class="showcase-img">
+                                        <img src="{{ asset("uploads/".$category->image) }}" class="showcase-img">
                                     </a>
                                 </div>
                             </div>
