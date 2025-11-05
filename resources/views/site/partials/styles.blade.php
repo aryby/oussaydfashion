@@ -1,43 +1,43 @@
 <link rel="shortcut icon" type="image/x-icon"
-    href="{{ secure_asset('uploads/' . config('settings.site_favicon.attachment')) }}">
+    href="{{ asset('uploads/' . config('settings.site_favicon.attachment')) }}">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- jQuery -->
-<script src="{{ secure_asset('assets/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
 
 <!-- Bootstrap4 files-->
-<script src="{{ secure_asset('assets/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
-<link href="{{ secure_asset('assets/css/bootstrap.css?v=1.0') }}" rel="stylesheet" type="text/css" />
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+<link href="{{ asset('assets/css/bootstrap.css?v=1.0') }}" rel="stylesheet" type="text/css" />
 
 <!-- Font awesome 5 -->
-<link href="{{ secure_asset('assets/fonts/fontawesome/css/fontawesome-all.min.css') }}" type="text/css" rel="stylesheet">
+<link href="{{ asset('assets/fonts/fontawesome/css/fontawesome-all.min.css') }}" type="text/css" rel="stylesheet">
 
 <!-- plugin: fancybox  -->
-<script src="{{ secure_asset('assets/plugins/fancybox/fancybox.min.js') }}" type="text/javascript"></script>
-<link href="{{ secure_asset('assets/plugins/fancybox/fancybox.min.css') }}" type="text/css" rel="stylesheet">
+<script src="{{ asset('assets/plugins/fancybox/fancybox.min.js') }}" type="text/javascript"></script>
+<link href="{{ asset('assets/plugins/fancybox/fancybox.min.css') }}" type="text/css" rel="stylesheet">
 
 <!-- plugin: owl carousel  -->
-<link href="{{ secure_asset('assets/plugins/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-<link href="{{ secure_asset('assets/plugins/owlcarousel/assets/owl.theme.default.css') }}" rel="stylesheet">
-<script src="{{ secure_asset('assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
+<link href="{{ asset('assets/plugins/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/plugins/owlcarousel/assets/owl.theme.default.css') }}" rel="stylesheet">
+<script src="{{ asset('assets/plugins/owlcarousel/owl.carousel.min.js') }}"></script>
 
 <!-- custom style -->
-<link href="{{ secure_asset('assets/css/ui.css?v=1.0') }}" rel="stylesheet" type="text/css" />
-<link href="{{ secure_asset('assets/css/responsive.css') }}" rel="stylesheet"
+<link href="{{ asset('assets/css/ui.css?v=1.0') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet"
     media="only screen and (max-width: 1200px)" />
 
-<link href="{{ secure_asset('assets/css/soft-design-system.min.css') }}" 
+<link href="{{ asset('assets/css/soft-design-system.min.css') }}" 
 rel="stylesheet" />
     <!--
     - favicon
   -->
-  <link rel="shortcut icon" href="{{ secure_asset('inspire/assets/images/logo/favicon.ico')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('inspire/assets/images/logo/favicon.ico')}}" type="image/x-icon">
 
   <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="{{ secure_asset('inspire/assets/css/style-prefix.css')}}">
-  <link rel="stylesheet" href="{{ secure_asset('assets/css/custom-idea.css')}}">
+  <link rel="stylesheet" href="{{ asset('inspire/assets/css/style-prefix.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom-idea.css')}}">
 
   <!--
     - google font link
@@ -50,7 +50,7 @@ rel="stylesheet" />
 <!-- custom javascript -->
 
 <!-- mobile fixes -->
-<link href="{{ secure_asset('css/mobile-fixes.css') }}" rel="stylesheet" media="only screen and (max-width: 768px)" />
+<link href="{{ asset('css/mobile-fixes.css') }}" rel="stylesheet" media="only screen and (max-width: 768px)" />
 
 <style>
   /* Ensure overlay never blocks clicks unless explicitly active */

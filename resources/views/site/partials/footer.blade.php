@@ -1,7 +1,7 @@
   <!--
     - custom js link
   -->
-  <script src="{{ secure_asset('inspire/assets/js/script.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('inspire/assets/js/script.js') }}" type="text/javascript"></script>
 
   <!--
     - ionicon link

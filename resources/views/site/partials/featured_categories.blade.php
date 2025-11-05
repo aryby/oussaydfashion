@@ -21,7 +21,7 @@
               <div class="category-item">
 
             <div class="category-img-box">
-              <img src="{{ secure_asset('uploads/' . $category->image) }}" alt="{{ $category->name }}" width="30">
+              <img src="{{ asset('uploads/' . $category->image) }}" alt="{{ $category->name }}" width="30">
             </div>
 
             <div class="category-content-box">
@@ -40,7 +40,7 @@
 
                 {{-- <div class="col-md-4">
                     <div class="card-banner"
-                        style="height:250px; background-image: url({{ secure_asset('uploads/' . $category->image) }});">
+                        style="height:250px; background-image: url({{ asset('uploads/' . $category->image) }});">
                         <article class="overlay overlay-cover d-flex align-items-center justify-content-center">
                             <div class="text-center">
                                 <h5 class="card-title">{{ $category->name }}</h5>

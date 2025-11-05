@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo src="{{ secure_asset(config('settings.site_logo.attachment')) }}"
+                        <x-application-logo src="{{ asset(config('settings.site_logo.attachment')) }}"
                             class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
