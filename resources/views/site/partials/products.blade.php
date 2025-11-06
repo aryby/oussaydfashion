@@ -1,14 +1,15 @@
     <div class="showcase">
 
     <div class="showcase-banner">
-        @if ($product->images)
+        @if ($product->images && count($product->images) > 0)
             <div class="img-wrap">
                 <a href="{{ route('products.show', $product->slug) }}">
                     <img src="{{ asset('uploads/' . $product->images[0]) }}" class="showcase-img"></a>
             </div>
         @else
             <div class="img-wrap">
-                <a href="{{ ('assets\images\icons\rating-5.png') }}"><img src="{{ ('assets\images\icons\rating-5.png') }}"></a>
+                <a href="{{ route('products.show', $product->slug) }}">
+                    <img src="{{ asset('assets/images/product-fallback.png') }}" alt="No image available" class="showcase-img"></a>
             </div>
         @endif
         {{-- <img src="/inspire/assets/images/products/jacket-3.jpg" alt="Mens Winter Leathers Jackets" width="300"
@@ -52,18 +53,18 @@
 
     <div class="showcase-content">
 
-        <a href="#" class="showcase-category">{{ Str::limit($product->name, 10) }}</a>
+        <a href="#" class="showcase-category">{{ Str::limit($product->name ?? '', 10) }}</a>
 
         <a href="{{ route('products.show', $product->slug) }}">
             <h4 class="showcase-title" style="font-size: 0.9rem; margin-top: 5px;">
-                {{ Str::limit(app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description, 20) }}
+                {{ Str::limit((app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description) ?? '', 20) }}
             </h4>
         </a>
 
         <div class="showcase-rating">
             <div class="rating-wrap d-inline">
                 @php
-                    $ratings_count = $product->ratings->count('star_rating');
+                    $ratings_count = $product->ratings ? $product->ratings->count('star_rating') : 0;
                     if ($ratings_count > 0) {
                         $ratings_sum = $product->ratings->sum('star_rating');
                         $avg_rating = round($ratings_sum / $ratings_count, 1);

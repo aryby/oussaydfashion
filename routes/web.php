@@ -47,17 +47,15 @@ Route::get('/categories', [CategoryController::class, 'index'])
 Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])
     ->name('categories.show');
 
-// Products
-Route::get('/products/{product:slug}', [ProductController::class, 'show'])
-    ->name('products.show');
-
 Route::get('/search', [ProductController::class, 'search'])
     ->name('products.search');
-
 
 Route::get('/products/prices-drop', [ProductController::class, 'pricesDrop'])->name('products.prices_drop');
 Route::get('/products/new', [ProductController::class, 'new'])->name('products.new');
 Route::get('/products/best-sales', [ProductController::class, 'bestSales'])->name('products.bestsales');
+
+Route::get('/products/{product:slug}', [ProductController::class, 'show'])
+    ->name('products.show');
 
 Route::get('/contact', [PageController::class, 'contact'])->name('contact.index');
 Route::get('/sitemap', [PageController::class, 'sitemap'])->name('sitemap.index');
