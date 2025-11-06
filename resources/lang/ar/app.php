@@ -31,6 +31,10 @@ return [
     'key' => 'المفتاح',
     'value' => 'القيمة',
     'attachment' => 'المرفق',
+
+    // Header translations
+    'Free Shipping' => 'شحن مجاني',
+    'This Week Order Over - $55' => 'هذا الأسبوع اطلب بأكثر من 55 دولار',
 ];
 
 

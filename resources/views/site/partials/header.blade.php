@@ -27,8 +27,8 @@
             </ul>
             <div class="header-alert-news">
                 <p>
-                    <b>Free Shipping</b>
-                    This Week Order Over - $55
+                    <b>@lang('app.Free Shipping')</b>
+                    @lang('app.This Week Order Over - $55')
                 </p>
             </div>
             <div class="header-top-actions"> <button class="btn dropdown-toggle"
@@ -53,7 +53,7 @@
                     <img src="{{ asset('uploads/' . config('settings.site_logo.attachment')) }}" alt=""
                         width="120" height="50">
                 @else
-                    <b>{{ config('settings.site_title.value') }}</b>
+                    <b>@lang('app.' . config('settings.site_title.value'))</b>
                 @endif
             </a>
             <div class="header-search-container">

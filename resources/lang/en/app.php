@@ -31,6 +31,10 @@ return [
     'key' => 'Key',
     'value' => 'Value',
     'attachment' => 'Attachment',
+
+    // Header translations
+    'Free Shipping' => 'Free Shipping',
+    'This Week Order Over - $55' => 'This Week Order Over - $55',
 ];
 
 
