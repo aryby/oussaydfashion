@@ -5,7 +5,7 @@
     <div class="container">
         <div class="product-featured">
 
-            <h2 class="title" style="margin-bottom: 20px;">{{ __('Featured Categories') }}</h2>
+            <h2 class="title" style="margin-bottom: 20px;">{{ __('featured.categories') }}</h2>
 
             <div class="category-list-container category-carousel-flex-container">
                 @foreach ($featured_categories as $category)

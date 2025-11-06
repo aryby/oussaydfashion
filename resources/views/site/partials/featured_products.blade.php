@@ -2,7 +2,7 @@
     <div class="container">
         <div class="product-featured">
 
-            <h2 class="title" style="margin-bottom: 20px;">{{ __('Featured Products') }}</h2>
+            <h2 class="title" style="margin-bottom: 20px;">{{ __('featured.products') }}</h2>
 
             <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">

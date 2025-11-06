@@ -1,7 +1,7 @@
 <div class="sidebar-category">
 
     <div class="sidebar-top">
-        <h2 class="sidebar-title">{{ __('Category') }}</h2>
+        <h2 class="sidebar-title">{{ __('categories') }}</h2>
         <button class="sidebar-close-btn" data-mobile-menu-close-btn>
             <ion-icon name="close-outline"></ion-icon>
         </button>
@@ -46,7 +46,7 @@
 </div>
 
 <div class="product-showcase">
-    <h3 class="showcase-heading">{{ __('Best sellers') }}</h3>
+    <h3 class="showcase-heading">{{ __('best.seller') }}</h3>
     <div class="showcase-wrapper">
         <div class="showcase-container">
             @foreach(($featured_products ?? []) as $product)
