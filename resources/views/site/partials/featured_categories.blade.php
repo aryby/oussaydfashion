@@ -23,10 +23,10 @@
                                     <h4 class="showcase-title" style="font-size: 0.9rem;">{{ Str::limit($category->name, 10) }}</h4>
                                 </a>
                                 <p class="showcase-desc" style="font-size: 0.8rem;">
-                                    {{ $category->products_count }} Products
+                                    {{ $category->products_count }} {{ __('featured_categories.products_count_suffix') }}
                                 </p>
                                 <div class="price-box" style="font-size: 0.9rem;">
-                                    <a href="{{ route('categories.show', $category->slug) }}" class="btn btn-primary btn-sm">Show All</a>
+                                    <a href="{{ route('categories.show', $category->slug) }}" class="btn btn-primary btn-sm">{{ __('featured_categories.show_all') }}</a>
                                 </div>
                             </div>
                         </div>

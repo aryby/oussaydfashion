@@ -267,7 +267,7 @@
             $('#addToCart').submit(function(e) {
                 if ($('.option').val() == 0) {
                     e.preventDefault();
-                    alert('Please select an option');
+                    alert("@lang('product.select_option_alert')");
                 }
 
                 calculatePrice();

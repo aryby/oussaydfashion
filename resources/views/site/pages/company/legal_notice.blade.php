@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'Legal Notice')
+@section('title', __('legal_notice.title'))
 
 @section('content')
     <div class="container">
-        <h1>Legal Notice Page</h1>
-        <p>This is the placeholder page for legal notices.</p>
+        <h1>@lang('legal_notice.page_heading')</h1>
+        <p>@lang('legal_notice.content')</p>
     </div>
 @endsection

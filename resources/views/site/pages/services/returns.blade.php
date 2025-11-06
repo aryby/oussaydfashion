@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'Returns & Refunds')
+@section('title', __('returns.title'))
 
 @section('content')
     <div class="container">
-        <h1>Returns & Refunds Page</h1>
-        <p>This is the placeholder page for returns and refunds policy.</p>
+        <h1>@lang('returns.page_heading')</h1>
+        <p>@lang('returns.content')</p>
     </div>
 @endsection

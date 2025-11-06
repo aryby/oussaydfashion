@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'Terms and Conditions')
+@section('title', __('terms_conditions.title'))
 
 @section('content')
     <div class="container">
-        <h1>Terms and Conditions Page</h1>
-        <p>This is the placeholder page for terms and conditions.</p>
+        <h1>@lang('terms_conditions.page_heading')</h1>
+        <p>@lang('terms_conditions.content')</p>
     </div>
 @endsection

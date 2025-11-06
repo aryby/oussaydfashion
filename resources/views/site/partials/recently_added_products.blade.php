@@ -7,7 +7,7 @@
             
             <div class="product-main">
 
-                <h2 class="title">New Products</h2>
+                <h2 class="title">@lang('recently_added_products.title')</h2>
 
                 <div class="product-grid">
 @foreach ($recently_added_products as $product)

@@ -57,8 +57,8 @@
                         @endif
                         
                         <div class="mb-3">
-                            <p><strong><ion-icon name="mail-outline"></ion-icon> {{ __('Email') }}:</strong></p>
-                            <p>{{ config('settings.site_title.value') ?: 'contact@store.com' }}</p>
+                            <p><strong><ion-icon name="mail-outline"></ion-icon> @lang('Email'):</strong></p>
+                            <p>{{ config('settings.site_title.value') ?: @lang('contact.default_email') }}</p>
                         </div>
                         
                         <h5 class="card-title mt-4">{{ __('Follow Us') }}</h5>

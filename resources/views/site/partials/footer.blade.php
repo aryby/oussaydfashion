@@ -41,11 +41,20 @@
 
       <div class="container">
 
-        <h2 class="footer-category-title">{{ __('footer.brand_directory') }}</h2>
+        <h2 class="footer-category-title">@lang('footer.brand_directory')</h2>
 
         <div class="footer-category-box">
-          <h3 class="category-box-title">{{ __('footer.shop_by_category') }}</h3>
-          <a href="{{ route('products.categories') }}" class="footer-category-link">{{ __('footer.all_categories') }}</a>
+
+                <h3 class="category-box-title">@lang('footer.shop_by_category')</h3>
+
+                <a href="{{ route('products.categories') }}" class="footer-category-link">@lang('footer.all_categories')</a>
+            </div>
+
+            <div class="footer-category-box">
+
+                <h3 class="category-box-title">@lang('footer.popular_categories')</h3>
+
+                <a href="#" class="footer-category-link">@lang('footer.all_categories')</a>
         </div>
 
       </div>
@@ -75,55 +84,27 @@
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">{{ __('footer.products') }}</h2>
+            <h2 class="nav-title">@lang('footer.products')</h2>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('products.prices_drop') }}" class="footer-nav-link">{{ __('footer.prices_drop') }}</a>
+            <a href="{{ route('products.prices_drop') }}" class="footer-nav-link">@lang('footer.prices_drop')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('products.new') }}" class="footer-nav-link">{{ __('footer.new_products') }}</a>
+            <a href="{{ route('products.new') }}" class="footer-nav-link">@lang('footer.new_products')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('products.bestsales') }}" class="footer-nav-link">{{ __('footer.best_sales') }}</a>
+            <a href="{{ route('products.bestsales') }}" class="footer-nav-link">@lang('footer.best_sales')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('contact.index') }}" class="footer-nav-link">{{ __('footer.contact_us') }}</a>
+            <a href="{{ route('contact.index') }}" class="footer-nav-link">@lang('footer.contact_us')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('sitemap.index') }}" class="footer-nav-link">{{ __('footer.sitemap') }}</a>
-          </li>
-
-        </ul>
-
-        <ul class="footer-nav-list">
-
-          <li class="footer-nav-item">
-            <h2 class="nav-title">{{ __('footer.our_company') }}</h2>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="{{ route('delivery.info') }}" class="footer-nav-link">{{ __('footer.delivery') }}</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="{{ route('legal.notice') }}" class="footer-nav-link">{{ __('footer.legal_notice') }}</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="{{ route('terms.conditions') }}" class="footer-nav-link">{{ __('footer.terms_conditions') }}</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="{{ route('about.us') }}" class="footer-nav-link">{{ __('footer.about_us') }}</a>
-          </li>
-
-          <li class="footer-nav-item">
-            <a href="{{ route('secure.payment') }}" class="footer-nav-link">{{ __('footer.secure_payment') }}</a>
+            <a href="{{ route('sitemap.index') }}" class="footer-nav-link">@lang('footer.sitemap')</a>
           </li>
 
         </ul>
@@ -131,27 +112,55 @@
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">{{ __('footer.services_title') }}</h2>
+            <h2 class="nav-title">@lang('footer.our_company')</h2>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('services.returns') }}" class="footer-nav-link">{{ __('footer.returns_refunds') }}</a>
+            <a href="{{ route('delivery.info') }}" class="footer-nav-link">@lang('footer.delivery')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('services.faq') }}" class="footer-nav-link">{{ __('footer.faq') }}</a>
+            <a href="{{ route('legal.notice') }}" class="footer-nav-link">@lang('footer.legal_notice')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('services.shipping') }}" class="footer-nav-link">{{ __('footer.shipping_info') }}</a>
+            <a href="{{ route('terms.conditions') }}" class="footer-nav-link">@lang('footer.terms_conditions')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('services.warranty') }}" class="footer-nav-link">{{ __('footer.warranty') }}</a>
+            <a href="{{ route('about.us') }}" class="footer-nav-link">@lang('footer.about_us')</a>
           </li>
 
           <li class="footer-nav-item">
-            <a href="{{ route('services.gift_cards') }}" class="footer-nav-link">{{ __('footer.gift_cards') }}</a>
+            <a href="{{ route('secure.payment') }}" class="footer-nav-link">@lang('footer.secure_payment')</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">@lang('footer.services_title')</h2>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="{{ route('services.returns') }}" class="footer-nav-link">@lang('footer.returns_refunds')</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="{{ route('services.faq') }}" class="footer-nav-link">@lang('footer.faq')</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="{{ route('services.shipping') }}" class="footer-nav-link">@lang('footer.shipping_info')</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="{{ route('services.warranty') }}" class="footer-nav-link">@lang('footer.warranty')</a>
+          </li>
+
+          <li class="footer-nav-item">
+            <a href="{{ route('services.gift_cards') }}" class="footer-nav-link">@lang('footer.gift_cards')</a>
           </li>
 
         </ul>
@@ -227,8 +236,11 @@
     <div class="footer-bottom">
 
       <div class="container">
+
+        <img src="{{ asset('assets/images/payment.png') }}" alt="payment method" class="payment-img">
+
         <p class="copyright">
-          Copyright &copy; {{ date('Y') }} <a href="/">{{ config('settings.site_title.value') ?: __('footer.store') }}</a> {{ __('footer.all_rights_reserved') }}
+          Copyright &copy; {{ date('Y') }} <a href="/">{{ config('settings.site_title.value') ?: __('footer.store') }}</a> @lang('footer.all_rights_reserved')
         </p>
 
       </div>

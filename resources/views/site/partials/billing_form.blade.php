@@ -12,7 +12,7 @@
                     </div>
                     <div class="col form-group">
                         <label>Email &nbsp;</label>
-                        <input type="email" class="form-control" name="emaail" value="" placeholder="{{ __('email') }}">
+                        <input type="email" class="form-control" name="emaail" value="" placeholder="{{ __('billing_form.email_placeholder') }}">
                     </div>
                     <div class="col form-group">
                         <label>{{ __('Phone Number') }}</label><span class="required" style="color: red"> * </span>
@@ -26,7 +26,7 @@
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label>{{ __('Address') }}</label><span class="required" style="color: red"> * </span>
-                        <input type="text" required class="form-control" name="street" value="{{ old('street') }}" placeholder="{{ __('Street, building, floor, apartment') }}">
+                        <input type="text" required class="form-control" name="street" value="{{ old('street') }}" placeholder="{{ __('billing_form.address_placeholder') }}">
                     </div>
                 </div>
                {{--  <div class="form-row">

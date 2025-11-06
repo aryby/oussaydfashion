@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'FAQ')
+@section('title', __('faq.title'))
 
 @section('content')
     <div class="container">
-        <h1>Frequently Asked Questions Page</h1>
-        <p>This is the placeholder page for frequently asked questions.</p>
+        <h1>@lang('faq.page_heading')</h1>
+        <p>@lang('faq.content')</p>
     </div>
 @endsection

@@ -1,5 +1,5 @@
 @extends('site.app')
-@section('title', 'Cart')
+@section('title', __('cart.title'))
 @section('content')
     @livewire('cart')
 @endsection

@@ -27,8 +27,8 @@
             </ul>
             <div class="header-alert-news">
                 <p>
-                    <b>@lang('app.Free Shipping')</b>
-                    @lang('app.This Week Order Over - $55')
+                    <b>@lang('header.free_shipping')</b>
+                    @lang('header.free_shipping_message')
                 </p>
             </div>
             <div class="header-top-actions"> <button class="btn dropdown-toggle"
@@ -53,12 +53,12 @@
                     <img src="{{ asset('uploads/' . config('settings.site_logo.attachment')) }}" alt=""
                         width="120" height="50">
                 @else
-                    <b>@lang('app.' . config('settings.site_title.value'))</b>
+                    <b>@lang('header.site_title_prefix'){{ config('settings.site_title.value') }}</b>
                 @endif
             </a>
             <div class="header-search-container">
                 <form action="{{ route('products.search') }}" class="search-wrap">
-                    <input type="text" class="search-field" placeholder="{{ __('Search Products') }}" name="q"
+                    <input type="text" class="search-field" placeholder="@lang('header.search_products_placeholder')" name="q"
                         value="{{ isset($q) ? $q : '' }}">
                     <button class="search-btn" type="submit">
                         <ion-icon name="search-outline"></ion-icon>

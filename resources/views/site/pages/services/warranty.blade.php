@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'Warranty')
+@section('title', __('warranty.title'))
 
 @section('content')
     <div class="container">
-        <h1>Warranty Page</h1>
-        <p>This is the placeholder page for warranty information.</p>
+        <h1>@lang('warranty.page_heading')</h1>
+        <p>@lang('warranty.content')</p>
     </div>
 @endsection

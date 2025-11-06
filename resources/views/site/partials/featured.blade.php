@@ -91,7 +91,7 @@
                     </p>
 
                     <p>
-                        En Stock
+                        @lang('featured.in_stock')
                     </p>
                 </div>
 

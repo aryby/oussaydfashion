@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
     <meta title="{{ config('settings.seo_meta_title.value') }}" content="{{ config('settings.seo_meta_content.value') }}">
-    <title>{{ config('settings.site_title.value') ?? 'No title set' }} - @yield('title')</title>
+    <title>{{ config('settings.site_title.value') ?? __('app.no_title_set') }} - @yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('css/normalize.min.css') }}">
     @livewireStyles()

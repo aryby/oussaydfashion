@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'About Us')
+@section('title', __('about_us.title'))
 
 @section('content')
     <div class="container">
-        <h1>About Us Page</h1>
-        <p>This is the placeholder page for information about the company.</p>
+        <h1>@lang('about_us.page_heading')</h1>
+        <p>@lang('about_us.content')</p>
     </div>
 @endsection

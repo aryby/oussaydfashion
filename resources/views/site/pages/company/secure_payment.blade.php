@@ -1,10 +1,10 @@
 @extends('site.app')
 
-@section('title', 'Secure Payment')
+@section('title', __('secure_payment.title'))
 
 @section('content')
     <div class="container">
-        <h1>Secure Payment Page</h1>
-        <p>This is the placeholder page for secure payment information.</p>
+        <h1>@lang('secure_payment.page_heading')</h1>
+        <p>@lang('secure_payment.content')</p>
     </div>
 @endsection

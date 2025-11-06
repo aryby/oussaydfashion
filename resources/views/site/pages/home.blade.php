@@ -1,6 +1,6 @@
 @extends('site.app')
 
-@section('title', 'Home')
+@section('title', __('home.title'))
 
 @section('content')
     @if (Session::has('message'))
