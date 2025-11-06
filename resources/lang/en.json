@@ -106,5 +106,13 @@
     "shipping.content": "This is the placeholder page for shipping information.",
     "warranty.title": "Warranty",
     "warranty.page_heading": "Warranty Page",
-    "warranty.content": "This is the placeholder page for warranty information."
+    "warranty.content": "This is the placeholder page for warranty information.",
+    "Your Cart": "Your Cart",
+    "title_icon": "Title Icon",
+    "Cart": "Cart",
+    "Wishlist": "Wishlist",
+    "Profile": "Profile",
+    "Orders": "Orders",
+    "Login": "Login",
+    "Home": "Home"
 }

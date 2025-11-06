@@ -107,5 +107,12 @@
     "shipping.content": "هذه صفحة مؤقتة لمعلومات الشحن.",
     "warranty.title": "الضمان",
     "warranty.page_heading": "صفحة الضمان",
-    "warranty.content": "هذه صفحة مؤقتة لمعلومات الضمان."
+    "warranty.content": "هذه صفحة مؤقتة لمعلومات الضمان.",
+    "title_icon": "أيقونة العنوان",
+    "Cart": "السلة",
+    "Wishlist": "قائمة الرغبات",
+    "Profile": "الملف الشخصي",
+    "Orders": "الطلبات",
+    "Login": "تسجيل الدخول",
+    "Home": "الرئيسية"
 }
