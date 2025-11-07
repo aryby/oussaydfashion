@@ -36,9 +36,13 @@
                                             <tr>
                                                 <td>
                                                     <figure class="media">
-                                                        <div class="img-wrap"><img
-                                                                src="{{ asset('upload/' . data_get($item->associatedModel->images, '0.full', 'no-image.png')) }}"
-                                                                class="img-thumbnail img-sm"></div>
+                                                        <div class="img-wrap">
+                                                            @php
+                                                                $firstImage = data_get($item->associatedModel->images, '0');
+                                                                $imagePath = $firstImage ? asset('uploads/' . $firstImage) : asset('assets/images/placeholder.png');
+                                                            @endphp
+                                                            <img src="{{ $imagePath }}" class="img-thumbnail img-sm">
+                                                        </div>
                                                         <figcaption class="media-body">
                                                             <p class="small mb-1">
                                                                 {{ Str::limit($item->name, 50) }}
