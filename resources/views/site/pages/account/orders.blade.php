@@ -9,7 +9,13 @@
     <section class="section-content bg padding-y border-top">
         <div class="container">
             <div class="row">
-                @if (Session::has('INVNUM'))
+                @if (Session::has('success'))
+                    <p class="alert alert-success">{{ Session::get('success') }}
+                        @if (Session::has('INVNUM'))
+                            {{ __('Your order number is:') }} {{ Session::get('INVNUM') }}
+                        @endif
+                    </p>
+                @elseif (Session::has('INVNUM'))
                     <p class="alert alert-success">{{ __('Order placed successfully. Your order number is:') }}
                         {{ Session::get('INVNUM') }}</p>
                 @endif
@@ -33,26 +39,47 @@
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td scope="row">{{ $order->number }}</td>
-                                        <td><span
-                                                class="badge badge-success">{{ __(strtoupper($order->status->value)) }}</span>
-                                        <td>{{ number_format($order->grand_total) }}
-                                        </td>
+                                        <td><span class="badge badge-success">{{ __(strtoupper($order->status->value)) }}</span></td>
+                                        <td>{{ number_format($order->grand_total) }}</td>
                                         <td>{{ $order->currency }}</td>
                                         <td>{{ __($order->payment_method) }}</td>
                                         <td>
                                             @foreach ($order->items as $item)
                                                 <span class="">{{ $item->name }}
-                                                    @foreach ($item->attributes as $key => $value)
-                                                        , {{ $value }}
-                                                    @endforeach
+                                                    @if (!empty($item->attributes) && is_array($item->attributes))
+                                                        @php
+                                                            $attrs = $item->attributes;
+                                                            // Check if it's an indexed array (from BuyNowController)
+                                                            $isIndexedArray = !empty($attrs) && isset($attrs[0]) && is_array($attrs[0]);
+                                                        @endphp
+                                                        @if ($isIndexedArray)
+                                                            {{-- Array of arrays format (from BuyNowController) --}}
+                                                            @foreach ($attrs as $attr)
+                                                                @if (is_array($attr) && isset($attr['value']))
+                                                                    @if (isset($attr['attribute_name']))
+                                                                        , {{ $attr['attribute_name'] }}: {{ $attr['value'] }}
+                                                                    @else
+                                                                        , {{ $attr['value'] }}
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                        @else
+                                                            {{-- Simple key-value format (from regular cart) --}}
+                                                            @foreach ($attrs as $key => $value)
+                                                                @if (is_array($value))
+                                                                    {{-- Skip array values or handle them safely --}}
+                                                                @elseif (is_string($value) || is_numeric($value))
+                                                                    , {{ is_string($key) ? $key . ': ' : '' }}{{ $value }}
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endif
                                                     | {{ __('Qty') }}: {{ $item->qty }}
                                                 </span>
                                                 <br>
                                             @endforeach
                                         </td>
-                                        </td>
-                                        <td>{{ Carbon\Carbon::parse($order->created_at)->isoFormat('A h:m ,dddd, D/MM/YYYY ') }}
-                                        </td>
+                                        <td>{{ Carbon\Carbon::parse($order->created_at)->isoFormat('A h:m ,dddd, D/MM/YYYY ') }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

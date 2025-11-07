@@ -119,11 +119,20 @@ class BuyNowController extends Controller
             'price' => $basePrice,
         ]);
 
+        // Log the user in if not already logged in
+        if (!Auth::check()) {
+            Auth::login($user);
+        }
+
         // Notifier l'admin par email
         $adminEmail = config('mail.admin_email', env('MAIL_FROM_ADDRESS', 'admin@example.com'));
         if ($adminEmail) {
             Notification::route('mail', $adminEmail)->notify(new NewOrderNotification($order));
         }
-        return redirect()->route('products.show', $product->slug)->with('success', __('Order placed successfully!'));
+        
+        // Redirect to orders page with success message
+        return redirect()->route('account.orders')
+            ->with('success', __('Order placed successfully!'))
+            ->with('INVNUM', $order->number);
     }
 }
