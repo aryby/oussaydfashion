@@ -1,40 +1,38 @@
 <?php
 
 return [
-    // Navigation Groups
-    'Shop' => 'Shop',
+    // Groupes de navigation
+    'Shop' => 'Boutique',
     'Administration' => 'Administration',
     
-    // Resources
-    'Products' => 'Products',
-    'Ratings' => 'Ratings',
-    'Categories' => 'Categories',
-    'Customers' => 'Customers',
-    'Orders' => 'Orders',
-    'Brands' => 'Brands',
-    'Admins' => 'Administrators',
-    'Settings' => 'Settings',
-    'Attributes' => 'Attributes',
-    'Offers' => 'Offers',
+    // Ressources
+    'Products' => 'Produits',
+    'Ratings' => 'Avis',
+    'Categories' => 'Catégories',
+    'Customers' => 'Clients',
+    'Orders' => 'Commandes',
+    'Brands' => 'Marques',
+    'Admins' => 'Administrateurs',
+    'Settings' => 'Paramètres',
+    'Attributes' => 'Attributs',
+    'Offers' => 'Offres',
     
-    // Form Labels
-    'name' => 'Name',
-    'name_ar' => 'Arabic Name',
+    // Étiquettes de formulaire
+    'name' => 'Nom',
+    'name_ar' => 'Nom en arabe',
     'description' => 'Description',
-    'description_ar' => 'Arabic Description',
+    'description_ar' => 'Description en arabe',
     'image' => 'Image',
     'logo' => 'Logo',
     'parent' => 'Parent',
     'menu' => 'Menu',
-    'featured' => 'Featured',
-    'discount_percentage' => 'Discount Percentage',
-    'key' => 'Key',
-    'value' => 'Value',
-    'attachment' => 'Attachment',
+    'featured' => 'En vedette',
+    'discount_percentage' => 'Pourcentage de réduction',
+    'key' => 'Clé',
+    'value' => 'Valeur',
+    'attachment' => 'Pièce jointe',
 
-    // Header translations
-    'Free Shipping' => 'Free Shipping',
-    'This Week Order Over - $55' => 'This Week Order Over - $55',
+    // Traductions d’en-tête
+    'Free Shipping' => 'Livraison gratuite',
+    'This Week Order Over - $55' => 'Cette semaine pour toute commande supérieure à 55 $',
 ];
-
-
