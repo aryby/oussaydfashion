@@ -1,8 +1,6 @@
 <div class="product-details-summary mb-3">
-    <div class="d-flex align-items-center mb-2">
-        @if($product->images && count($product->images))
-            <!-- Image moved to order_now.blade.php -->
-        @endif
+    {{-- <div class="d-flex align-items-center mb-2">
+    
         <div>
             <div class="text-muted small mb-1">{{ $product->brand->name ?? '' }}</div>
             <div class="mb-1">
@@ -14,7 +12,7 @@
                 @endif
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="mb-2">
         <strong>{{ __('Description') }}:</strong>
         <div class="small">{!! app()->getLocale() == 'ar' && $product->description_ar ? $product->description_ar : $product->description !!}</div>

@@ -136,8 +136,25 @@ rel="stylesheet" />
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
-  /* Add padding to body when mobile nav is visible */
+  /* ============================================
+     GLOBAL TYPOGRAPHY SYSTEM - UI/UX STANDARDS
+     ============================================ */
+  
+  /* Base Typography */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333333;
+    letter-spacing: -0.01em;
+    /* Add padding to body when mobile nav is visible */
     padding-bottom: 60px;
   }
 
@@ -147,6 +164,300 @@ rel="stylesheet" />
     }
     body {
       padding-bottom: 0;
+    }
+  }
+
+  /* Headings - Consistent Hierarchy */
+  h1, .h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  h2, .h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
+  }
+
+  h3, .h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #2a2a2a;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  h4, .h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #2a2a2a;
+    margin-bottom: 0.875rem;
+  }
+
+  h5, .h5 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #333333;
+    margin-bottom: 0.75rem;
+  }
+
+  h6, .h6 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #444444;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Paragraphs */
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555555;
+    margin-bottom: 1rem;
+  }
+
+  /* Links */
+  a {
+    color: hsl(353, 100%, 78%);
+    text-decoration: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: hsl(353, 100%, 70%);
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid hsl(353, 100%, 78%);
+    outline-offset: 2px;
+  }
+
+  /* Text Utilities */
+  .text-muted {
+    color: #6c757d !important;
+    font-size: 0.9375rem;
+  }
+
+  .text-small {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .text-large {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  .text-bold {
+    font-weight: 700;
+  }
+
+  .text-semibold {
+    font-weight: 600;
+  }
+
+  .text-medium {
+    font-weight: 500;
+  }
+
+  .text-light {
+    font-weight: 300;
+  }
+
+  /* Form Typography */
+  label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  textarea,
+  select {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333333;
+    line-height: 1.5;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #999999;
+    font-weight: 400;
+  }
+
+  /* Buttons Typography */
+  .btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+
+  .btn-lg {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .btn-sm {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Card Typography */
+  .card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555555;
+  }
+
+  /* List Typography */
+  ul, ol {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555555;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Blockquote */
+  blockquote {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: #666666;
+    border-left: 4px solid hsl(353, 100%, 78%);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  /* Responsive Typography */
+  @media (max-width: 768px) {
+    html {
+      font-size: 15px;
+    }
+
+    h1, .h1 {
+      font-size: 2rem;
+    }
+
+    h2, .h2 {
+      font-size: 1.75rem;
+    }
+
+    h3, .h3 {
+      font-size: 1.5rem;
+    }
+
+    h4, .h4 {
+      font-size: 1.25rem;
+    }
+
+    h5, .h5 {
+      font-size: 1.125rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+
+    h1, .h1 {
+      font-size: 1.75rem;
+    }
+
+    h2, .h2 {
+      font-size: 1.5rem;
+    }
+
+    h3, .h3 {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* RTL Support for Arabic */
+  [dir="rtl"] body,
+  [dir="rtl"] h1, [dir="rtl"] .h1,
+  [dir="rtl"] h2, [dir="rtl"] .h2,
+  [dir="rtl"] h3, [dir="rtl"] .h3,
+  [dir="rtl"] h4, [dir="rtl"] .h4,
+  [dir="rtl"] h5, [dir="rtl"] .h5,
+  [dir="rtl"] h6, [dir="rtl"] .h6,
+  [dir="rtl"] p,
+  [dir="rtl"] label,
+  [dir="rtl"] .btn,
+  [dir="rtl"] .card-title {
+    font-family: 'Poppins', 'Cairo', 'Tajawal', Arial, sans-serif;
+    text-align: right;
+  }
+
+  [dir="rtl"] blockquote {
+    border-left: none;
+    border-right: 4px solid hsl(353, 100%, 78%);
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  /* Accessibility - Focus States */
+  *:focus-visible {
+    outline: 2px solid hsl(353, 100%, 78%);
+    outline-offset: 2px;
+  }
+
+  /* Print Styles */
+  @media print {
+    body {
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #000;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #000;
+      page-break-after: avoid;
     }
   }
 </style>
