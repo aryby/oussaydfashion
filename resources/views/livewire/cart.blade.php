@@ -1,4 +1,5 @@
 <div>
+    <span wire:key="refresh-{{ $refreshKey }}" style="display: none;"></span>
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">
             <h4 class="title-page text-white">{{ __('Shopping Cart') }}</h4>
@@ -33,7 +34,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach (\Cart::session(auth()->id())->getContent() as $item)
-                                            <tr>
+                                            <tr wire:key="cart-item-{{ $item->id }}">
                                                 <td>
                                                     <figure class="media">
                                                         <div class="img-wrap">
@@ -55,13 +56,25 @@
                                                         </figcaption>
                                                     </figure>
                                                 </td>
-                                                <td>
-                                                    <div class="col-6 p-0">
-                                                        <input type="number" class="form-control form-control-sm text-center"
-                                                            value="{{ $item->quantity }}" min="1" wire:change="updateQuantity('{{ $item->id }}', $event.target.value)">
+                                                <td wire:key="quantity-{{ $item->id }}-{{ $item->quantity }}">
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <button class="btn btn-sm btn-outline-secondary" 
+                                                                type="button"
+                                                                wire:click="decrementQuantity('{{ $item->id }}')"
+                                                                @if($item->quantity <= 1) disabled @endif>
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                        <span class="mx-2" style="min-width: 30px; text-align: center; font-weight: 500;">
+                                                            {{ $item->quantity }}
+                                                        </span>
+                                                        <button class="btn btn-sm btn-outline-secondary" 
+                                                                type="button"
+                                                                wire:click="incrementQuantity('{{ $item->id }}')">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td wire:key="total-{{ $item->id }}-{{ $item->quantity }}">
                                                     <div class="price-wrap">
                                                         <var
                                                             class="price"><small><sup>{{ config('settings.currency_symbol.value') }}</sup></small>{{ number_format($item->price * $item->quantity) }}</var>
@@ -75,7 +88,7 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    <tfoot wire:key="cart-totals-{{ \Cart::session(auth()->id())->getTotalQuantity() }}">
                                         <tr>
                                             <td></td>
                                             <td><strong>{{ __('Total Quantity') }}: {{ \Cart::session(auth()->id())->getTotalQuantity() }}</strong></td>
@@ -88,7 +101,7 @@
                         </div>
                     @endif
                 </main>
-                <aside class="col-12 col-md-4">
+                <aside class="col-12 col-md-4" wire:key="cart-sidebar-{{ \Cart::session(auth()->id())->getSubTotal() }}">
                     @if (config('settings.shipping_cost.value') > 0)
                         <p class="alert alert-success text-center">
                             <small><sup>{{ config('settings.currency_symbol.value') }}</sup></small>{{ config('settings.shipping_cost.value') }}

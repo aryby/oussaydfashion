@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class Cart extends Component
 {
+    public $refreshKey = 0;
+
     public function removeItem($id)
     {
         if (\Cart::session(auth()->user()->id)->isEmpty()) {
@@ -13,6 +15,7 @@ class Cart extends Component
         }
 
         \Cart::session(auth()->user()->id)->remove($id);
+        $this->refreshKey++;
     }
 
     public function clear()
@@ -22,6 +25,7 @@ class Cart extends Component
         }
 
         \Cart::session(auth()->user()->id)->clear();
+        $this->refreshKey++;
     }
 
     public function updateQuantity($id, $quantity)
@@ -34,6 +38,39 @@ class Cart extends Component
                 'value' => $quantity,
             ],
         ]);
+        $this->refreshKey++;
+    }
+
+    public function incrementQuantity($id)
+    {
+        $cart = \Cart::session(auth()->user()->id);
+        $item = $cart->get($id);
+        
+        if ($item) {
+            $cart->update($id, [
+                'quantity' => [
+                    'relative' => false,
+                    'value' => $item->quantity + 1,
+                ],
+            ]);
+            $this->refreshKey++;
+        }
+    }
+
+    public function decrementQuantity($id)
+    {
+        $cart = \Cart::session(auth()->user()->id);
+        $item = $cart->get($id);
+        
+        if ($item && $item->quantity > 1) {
+            $cart->update($id, [
+                'quantity' => [
+                    'relative' => false,
+                    'value' => $item->quantity - 1,
+                ],
+            ]);
+            $this->refreshKey++;
+        }
     }
 
     public function render()
