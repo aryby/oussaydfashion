@@ -114,5 +114,19 @@
     "Profile": "الملف الشخصي",
     "Orders": "الطلبات",
     "Login": "تسجيل الدخول",
-    "Home": "الرئيسية"
+    "Home": "الرئيسية",
+    "Shopping Cart": "سلة التسوق",
+    "No items to display": "لا توجد عناصر لعرضها",
+    "Product": "المنتج",
+    "Quantity": "الكمية",
+    "Total": "الإجمالي",
+    "Qte": "كمية",
+    "Total Quantity": "إجمالي الكمية",
+    "will be added as a shipping cost": "سيتم إضافة تكلفة الشحن",
+    "Subtotal": "المجموع الفرعي",
+    "Shipping": "الشحن",
+    "Checkout with PayPal": "الدفع بواسطة باي بال",
+    "Checkout with Bank Card": "الدفع بواسطة البطاقة المصرفية",
+    "Cash on Delivery": "الدفع عند الاستلام",
+    "Clear Cart": "مسح السلة"
 }
