@@ -44,20 +44,25 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        if ($request->has('password') && !empty($request->password)) {
+        // Only update password if provided and not empty
+        if ($request->filled('password')) {
             $request->user()->forceFill([
                 'password' => Hash::make($request->password),
             ])->save();
         }
 
-        $user_info = $request->user()->info ?: new UserInfo;
+        $user_info = $request->user()->info;
+        if (!$user_info) {
+            $user_info = new UserInfo;
+            $user_info->user_id = $request->user()->id;
+        }
         $user_info->city = $request->city;
         $user_info->country = $request->country ?? 'Morocco';
         $user_info->state = $request->state;
         $user_info->phone_number = $request->phone_number;
-        $request->user()->info()->save($user_info);
+        $user_info->save();
 
-        return Redirect::route('account.profile')->with('status', 'profile-updated');
+        return Redirect::route('account.edit')->with('status', 'profile-updated');
     }
 
     /**

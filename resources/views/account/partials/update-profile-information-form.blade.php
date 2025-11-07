@@ -50,14 +50,41 @@
             @endif
         </div>
 
+        {{-- Address Fields --}}
+        <div class="border-t pt-4 mt-4">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">{{ __('Address Information') }}</h3>
+            
+            <div>
+                <x-input-label for="city" :value="__('City')" />
+                <x-text-input id="city" name="city" type="text" class="mt-1 block w-full"
+                    :value="old('city', $user->info?->city)" autocomplete="address-level2" />
+                <x-input-error class="mt-2" :messages="$errors->get('city')" />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="state" :value="__('State/Province')" />
+                <x-text-input id="state" name="state" type="text" class="mt-1 block w-full"
+                    :value="old('state', $user->info?->state)" autocomplete="address-level1" />
+                <x-input-error class="mt-2" :messages="$errors->get('state')" />
+            </div>
+
+            <div class="mt-4">
+                <x-input-label for="country" :value="__('Country')" />
+                <x-text-input id="country" name="country" type="text" class="mt-1 block w-full"
+                    :value="old('country', $user->info?->country ?? 'Morocco')" autocomplete="country-name" />
+                <x-input-error class="mt-2" :messages="$errors->get('country')" />
+            </div>
+        </div>
+
         <div>
             <x-input-label for="password" :value="__('Password')" />
             <x-text-input id="password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <p class="mt-1 text-sm text-gray-500">{{ __('Leave empty to keep your current password.') }}</p>
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Register') }}</x-primary-button>
+            <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
                 <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"

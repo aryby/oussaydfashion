@@ -25,14 +25,25 @@ class BuyNowController extends Controller
 
     public function orderNowSubmit(Product $product, Request $request)
     {
-        $validated = $request->validate([
+        // Check if user is authenticated and not a guest
+        $isRealUser = Auth::check() && !str_starts_with(Auth::user()->email, 'guest_');
+        
+        $rules = [
             'name' => 'required|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone' => 'required|string|max:30',
             'address' => 'required|string|max:255',
             'attributes' => 'nullable|array',
             'attributes.*' => 'exists:product_attributes,id',
-        ]);
+        ];
+        
+        // Phone is only required for guests
+        if (!$isRealUser) {
+            $rules['phone'] = 'required|string|max:30';
+        } else {
+            $rules['phone'] = 'nullable|string|max:30';
+        }
+        
+        $validated = $request->validate($rules);
 
         // Split name into first and last name (simple)
         $names = explode(' ', $validated['name'], 2);
@@ -97,7 +108,7 @@ class BuyNowController extends Controller
             'currency' => config('settings.currency_symbol.value', 'MAD'),
             'first_name' => $firstName,
             'last_name' => $lastName,
-            'phone_number' => $validated['phone'],
+            'phone_number' => $validated['phone'] ?? ($user->info?->phone_number ?? ''),
             'street' => $validated['address'],
             'apartment' => '',
             'floor' => '',

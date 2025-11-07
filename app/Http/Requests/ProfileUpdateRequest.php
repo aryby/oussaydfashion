@@ -16,15 +16,21 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'first_name' => ['nullable', 'string', 'max:255'],
             'last_name' => ['nullable', 'string', 'max:255'],
             'email' => ['nullable', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'city' => 'nullable|string|max:100|regex:/^[a-zA-Z\x{0600}-\x{06FF} ]+$/u',
             'state' => 'nullable|string|max:100|regex:/^[a-zA-Z\x{0600}-\x{06FF} ]+$/u',
             'country' => 'nullable|string|max:100|regex:/^[a-zA-Z\x{0600}-\x{06FF} ]+$/u',
-            'phone_number' => ['nullable', 'string'],
-            'password' => ['nullable', \Illuminate\Validation\Rules\Password::defaults()],
+            'phone_number' => ['nullable', 'string', 'max:30'],
         ];
+
+        // Only validate password if it's provided and not empty
+        if ($this->filled('password')) {
+            $rules['password'] = [\Illuminate\Validation\Rules\Password::defaults()];
+        }
+
+        return $rules;
     }
 }
