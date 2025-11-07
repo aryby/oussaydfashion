@@ -24,6 +24,18 @@ class Cart extends Component
         \Cart::session(auth()->user()->id)->clear();
     }
 
+    public function updateQuantity($id, $quantity)
+    {
+        // Ensure quantity is at least 1
+        $quantity = max(1, (int) $quantity);
+        
+        \Cart::session(auth()->user()->id)->update($id, [
+            'quantity' => [
+                'value' => $quantity,
+            ],
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.cart');
