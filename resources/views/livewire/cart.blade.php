@@ -58,7 +58,8 @@
                                                 </td>
                                                 <td wire:key="quantity-{{ $item->id }}-{{ $item->quantity }}">
                                                     <div class="d-flex align-items-center justify-content-center">
-                                                        <button class="btn btn-sm btn-outline-secondary" 
+                                                        <button class="p-0 m-0" style="border: none; color:grey; font-weight:400; font-size:10px" 
+
                                                                 type="button"
                                                                 wire:click="decrementQuantity('{{ $item->id }}')"
                                                                 @if($item->quantity <= 1) disabled @endif>
@@ -67,7 +68,7 @@
                                                         <span class="mx-2" style="min-width: 30px; text-align: center; font-weight: 500;">
                                                             {{ $item->quantity }}
                                                         </span>
-                                                        <button class="btn btn-sm btn-outline-secondary" 
+                                                        <button class="p-0 m-0" style="border: none; color:grey; font-weight:400; font-size:10px"
                                                                 type="button"
                                                                 wire:click="incrementQuantity('{{ $item->id }}')">
                                                             <i class="fa fa-plus"></i>
