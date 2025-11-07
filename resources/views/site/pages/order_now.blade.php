@@ -9,15 +9,15 @@
                 <div class="card-body p-3">
                     @if($product->images && count($product->images) > 0)
                         <div class="row">
-                            <div class="col-md-2 mini-preview">
-                                @foreach($product->images as $index => $image)
-                                    <img class="img-fluid mb-2 border p-1 rounded cursor-pointer {{ $loop->first ? 'border-primary' : '' }}" src="{{ asset('uploads/' . $image) }}" alt="Preview {{ $index + 1 }}" data-id="{{ $index + 1 }}">
-                                @endforeach
-                            </div>
-                            <div class="col-md-10">
+                            <div class="col-12 col-md-10 order-1 order-md-2">
                                 <div class="product-image-display">
                                     <img class="img-fluid rounded shadow-sm" src="{{ asset('uploads/' . $product->images[0]) }}" alt="Main Image" id="mainProductImageIdea" style="max-height: 500px; object-fit: contain;">
                                 </div>
+                            </div>
+                            <div class="col-12 col-md-2 mini-preview order-2 order-md-1">
+                                @foreach($product->images as $index => $image)
+                                    <img class="img-fluid mb-2 border p-1 rounded cursor-pointer {{ $loop->first ? 'border-primary' : '' }}" src="{{ asset('uploads/' . $image) }}" alt="Preview {{ $index + 1 }}" data-id="{{ $index + 1 }}">
+                                @endforeach
                             </div>
                         </div>
                     @endif
@@ -196,6 +196,50 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    /* Mobile: Display thumbnails horizontally below big image */
+    @media (max-width: 767.98px) {
+        .mini-preview {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            justify-content: flex-start;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+        
+        .mini-preview img {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            scroll-snap-align: start;
+            margin-bottom: 0 !important;
+        }
+        
+        .product-image-display {
+            margin-bottom: 15px;
+        }
+    }
+    
+    /* Desktop: Keep thumbnails vertical on the left */
+    @media (min-width: 768px) {
+        .mini-preview {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mini-preview img {
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+</style>
 @endsection
 
 @push('scripts')
