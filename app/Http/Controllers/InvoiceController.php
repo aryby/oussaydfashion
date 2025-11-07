@@ -55,7 +55,8 @@ class InvoiceController extends Controller
             ->date(Carbon::parse($order->updated_at))
             ->shipping(config('settings.shipping_cost.value') ?: 0)
             ->addItems($items)
-            ->logo('storage/' . config('settings.site_logo.attachment'));
+            ->logo('storage/' . config('settings.site_logo.attachment'))
+            ->template('ticket');
 
         return $invoice->stream();
     }
