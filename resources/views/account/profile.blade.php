@@ -12,9 +12,7 @@
             <p><strong>{{ __('Last Name') }}:</strong> {{ $user->last_name }}</p>
             <p><strong>{{ __('Email') }}:</strong> {{ $user->email }}</p>
             <p><strong>{{ __('Phone Number') }}:</strong> {{ $user->info?->phone_number }}</p>
-            <p><strong>{{ __('City') }}:</strong> {{ $user->info?->city }}</p>
-            <p><strong>{{ __('State') }}:</strong> {{ $user->info?->state }}</p>
-            <p><strong>{{ __('Country') }}:</strong> {{ $user->info?->country }}</p>
+            <p><strong>{{ __('Address') }}:</strong> {{ $user->info?->address }}</p>
         </div>
     </div>
 @endsection

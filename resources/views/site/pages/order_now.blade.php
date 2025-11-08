@@ -141,12 +141,12 @@
                         {{-- User Information Display --}}
                         @php
                             $userInfo = Auth::user()->info;
-                            $hasAddress = $userInfo && (!empty($userInfo->city) || !empty($userInfo->state) || !empty($userInfo->country));
+                            $hasAddress = $userInfo && !empty($userInfo->address);
                         @endphp
 
                         @if(!$hasAddress)
                             <div class="alert alert-warning mb-3">
-                                <i class="fas fa-exclamation-triangle"></i> 
+                                <i class="fas fa-exclamation-triangle"></i>
                                 {{ __('Please update your profile with address to complete checkout.') }}
                                 <a href="{{ route('account.edit') }}" class="alert-link">{{ __('Update Profile') }}</a>
                             </div>
@@ -157,29 +157,29 @@
                                 <div class="card-body p-3">
                                     <h6 class="fw-bold mb-3">{{ __('Your Information') }}</h6>
                                     <div class="mb-2">
-                                        <strong>{{ __('Name') }}:</strong> 
+                                        <strong>{{ __('Name') }}:</strong>
                                         <span>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
                                     </div>
                                     <div class="mb-2">
-                                        <strong>{{ __('Email') }}:</strong> 
+                                        <strong>{{ __('Email') }}:</strong>
                                         <span>{{ Auth::user()->email }}</span>
                                     </div>
                                     @if($userInfo && !empty($userInfo->phone_number))
                                         <div class="mb-2">
-                                            <strong>{{ __('Phone') }}:</strong> 
+                                            <strong>{{ __('Phone') }}:</strong>
                                             <span>{{ $userInfo->phone_number }}</span>
                                         </div>
                                     @endif
                                     @if($hasAddress)
                                         <div class="mb-2">
-                                            <strong>{{ __('Address') }}:</strong> 
+                                            <strong>{{ __('Address') }}:</strong>
                                             <span>
-                                                {{ $userInfo ? (($userInfo->city ?? '') . ($userInfo->state ? ', ' . $userInfo->state : '') . ($userInfo->country ? ', ' . $userInfo->country : '')) : '' }}
+                                                {{ $userInfo ? $userInfo->address : '' }}
                                             </span>
                                         </div>
                                     @else
                                         <div class="mb-2 text-danger">
-                                            <strong>{{ __('Address') }}:</strong> 
+                                            <strong>{{ __('Address') }}:</strong>
                                             <span class="small">{{ __('Not provided') }}</span>
                                         </div>
                                     @endif
@@ -223,7 +223,7 @@
                             <input type="hidden" name="name" value="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
                             <input type="hidden" name="email" value="{{ Auth::user()->email }}">
                             <input type="hidden" name="phone" value="{{ $userInfo && $userInfo->phone_number ? $userInfo->phone_number : '' }}" id="realUserPhone">
-                            <input type="hidden" name="address" value="{{ $userInfo ? (($userInfo->city ?? '') . ($userInfo->state ? ', ' . $userInfo->state : '') . ($userInfo->country ? ', ' . $userInfo->country : '')) : '' }}" id="realUserAddress">
+                            <input type="hidden" name="address" value="{{ $userInfo ? $userInfo->address : '' }}" id="realUserAddress">
                             
                             <button type="submit" class="btn btn-primary w-100 mt-3 btn-lg" {{ !$hasAddress ? 'disabled' : '' }}>
                                 <i class="fas fa-check-circle"></i> {{ __('Confirm Checkout') }}

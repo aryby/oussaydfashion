@@ -56,9 +56,7 @@ class ProfileController extends Controller
             $user_info = new UserInfo;
             $user_info->user_id = $request->user()->id;
         }
-        $user_info->city = $request->city;
-        $user_info->country = $request->country ?? 'Morocco';
-        $user_info->state = $request->state;
+        $user_info->address = $request->address;
         $user_info->phone_number = $request->phone_number;
         $user_info->save();
 

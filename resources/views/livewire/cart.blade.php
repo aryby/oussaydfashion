@@ -15,6 +15,9 @@
                     @if (Session::has('payment_type_warning'))
                         <p class="alert alert-danger">{{ __(Session::get('payment_type_warning')) }}</p>
                     @endif
+                    @if (Session::has('error'))
+                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -132,12 +135,52 @@
                     </dl>
                     <hr>
                     {{-- Checkout options --}}
-                    {{-- <a href="{{ route('checkout.index', ['payment_type' => 'paypal']) }}"
-                        class="btn btn-primary btn-md btn-block mb-2">{{ __('Checkout with PayPal') }}</a>
-                    <a href="{{ route('checkout.index', ['payment_type' => 'card']) }}"
-                        class="btn btn-secondary btn-md btn-block mb-2">{{ __('Checkout with Bank Card') }}</a>
-                     --}}<a href="{{ route('checkout.index', ['payment_type' => 'cash']) }}"
-                        class="btn btn-info btn-md btn-block">{{ __('Cash on Delivery') }}</a>
+                    @php
+                        $isGuest = Auth::check() && Str::startsWith(Auth::user()->email, 'guest_');
+                    @endphp
+
+                    @if($isGuest)
+                        {{-- Billing form for guests --}}
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5 class="card-title">{{ __('Billing Details') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <label>{{ __('First Name') }}</label><span class="required" style="color: red"> * </span>
+                                        <input type="text" wire:model="first_name" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>{{ __('Last Name') }}</label><span class="required" style="color: red"> * </span>
+                                        <input type="text" wire:model="last_name" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <label>{{ __('Email') }}</label><span class="required" style="color: red"> * </span>
+                                        <input type="email" wire:model="email" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label>{{ __('Phone Number') }}</label><span class="required" style="color: red"> * </span>
+                                        <input type="text" wire:model="phone_number" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ __('Address') }}</label><span class="required" style="color: red"> * </span>
+                                    <input type="text" wire:model="street" class="form-control" placeholder="{{ __('Enter your full address') }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ __('Order Notes') }}</label>
+                                    <textarea wire:model="notes" class="form-control" rows="3" placeholder="{{ __('Any special instructions...') }}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button wire:click="placeOrder" class="btn btn-info btn-md btn-block">{{ __('Cash on Delivery') }}</button>
+                    @else
+                        {{-- Confirm button for non-guests --}}
+                        <button wire:click="placeOrder" class="btn btn-success btn-md btn-block">{{ __('Confirm Order') }}</button>
+                    @endif
                     <hr>
                     <button class="btn btn-outline-danger btn-block mb-4"
                         wire:click="clear()">{{ __('Clear Cart') }}</button>
